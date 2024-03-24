@@ -41,32 +41,39 @@ useHead({
             </section>
 
 
-            <section class="relative flex h-48 w-full flex-col justify-center bg-secondary p-8 text-black">
-                <div id="Triangle" class="absolute -top-12 left-0 h-12 w-full bg-secondary"></div>
-                <h2>Accès bêta</h2>
+            <section class="relative">
+                <div class="h-48 w-full -rotate-3 bg-black">
+                </div>
+                <div class="absolute left-0 top-0 flex h-48 w-full flex-col justify-center bg-secondary p-8 text-black">
+                    <div class="absolute -top-2 left-0 z-50 h-2 w-full bg-black lg:hidden"></div>
 
-                <p class="mt-2 text-sm">
-                    L'application est en cours de développement,<br>
-                    inscris-toi pour tester en avant-première !
-                </p>
+                    <div id="Triangle" class="absolute -top-12 left-0 z-50 h-12 w-full bg-secondary lg:hidden"></div>
 
-                <Button variant="outline" as-child class="mx-auto mt-4">
-                    <a href="https://forms.gle/1AYWPCyix5Q8KSKm8" class="font-semibold">Je veux être
-                        bêta-testeur</a>
-                </Button>
-                <Button variant="link" as-child class="mx-auto mt-1 text-black">
-                    <a href="https://patreon.com/LeSpawn?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink"
-                        target="_blank">
-                        <Icon name="tabler:brand-patreon-filled" class="mr-1" size="16" />
-                        Soutenir le projet
-                    </a>
-                </Button>
+                    <h2>Accès bêta</h2>
+
+                    <p class="mt-2 text-sm">
+                        L'application est en cours de développement,<br>
+                        inscris-toi pour tester en avant-première !
+                    </p>
+
+                    <Button variant="outline" as-child class="mx-auto mt-4">
+                        <a href="https://forms.gle/1AYWPCyix5Q8KSKm8" class="font-semibold">Je veux être
+                            bêta-testeur</a>
+                    </Button>
+                    <Button variant="link" as-child class="mx-auto mt-1 text-black">
+                        <a href="https://patreon.com/LeSpawn?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink"
+                            target="_blank">
+                            <Icon name="tabler:brand-patreon-filled" class="mr-1" size="16" />
+                            Soutenir le projet
+                        </a>
+                    </Button>
+                </div>
             </section>
 
 
         </div>
 
-        <footer class="relative w-full bg-secondary pt-52">
+        <footer class="relative w-full bg-secondary pt-52 lg:mt-24 lg:border-t-4 lg:border-black">
             <div class="absolute bottom-0 left-0 h-24 w-full">
                 <img src="@/assets/images/Joystick.png" alt="Image de joystick" class="absolute -top-28 right-0 w-52">
                 <div class="mt-8 flex gap-1 px-8">
