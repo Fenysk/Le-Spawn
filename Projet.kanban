@@ -1,0 +1,501 @@
+{
+  "lists": [
+    {
+      "id": "815abfed-52e3-47a8-b479-cfd91ce6198e",
+      "title": "📅 V2 ideas",
+      "cards": [
+        {
+          "id": "6b9ec131-f36c-4348-bdad-3d75aed2305d",
+          "listId": "815abfed-52e3-47a8-b479-cfd91ce6198e",
+          "title": "Payments with other service",
+          "description": "Lemon Squeezy ? ( https://www.lemonsqueezy.com/ )",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "2dcc19a6-3ce6-4ec4-aa56-5513dc58a315",
+          "listId": "815abfed-52e3-47a8-b479-cfd91ce6198e",
+          "title": "Integrate server caching (for IA, Feed...)",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "28f37076-c642-4a18-a48f-de1681d654ba",
+          "listId": "815abfed-52e3-47a8-b479-cfd91ce6198e",
+          "title": "Add a general page load",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "a967eba0-0e77-40b5-bd14-459f3168d2d8",
+          "listId": "815abfed-52e3-47a8-b479-cfd91ce6198e",
+          "title": "Add reports",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "dc37ee96-b369-47c7-a279-122cb947e1f2",
+          "listId": "815abfed-52e3-47a8-b479-cfd91ce6198e",
+          "title": "Use Comic sans for aprilfool",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "dfdea4ae-c97c-4b42-a115-c80a96cc9853",
+          "listId": "815abfed-52e3-47a8-b479-cfd91ce6198e",
+          "title": "Add cookie consent",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "b7bee73c-cba8-487d-85b8-ab52853562df",
+          "listId": "815abfed-52e3-47a8-b479-cfd91ce6198e",
+          "title": "Migrate S3 to another stockage service + sort files",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "b78cf187-9e55-465c-87e5-93780d416cf9",
+      "title": "🔧 To fix",
+      "cards": [
+        {
+          "id": "5babd9ce-467c-40ad-acaf-fdb8e1d413f2",
+          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
+          "title": "Fix handling all errors",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "89f37cf8-6e19-43eb-9b51-959d339298e2",
+      "title": "⌛ TODO later",
+      "cards": [
+        {
+          "id": "b04a8cac-5884-4ae3-a825-dae4f079fcbe",
+          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
+          "title": "Define terms and conditions and privacy policy",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
+      "title": "📝 TODO priority",
+      "cards": [
+        {
+          "id": "b5af2bef-046e-4b0f-a5d8-f30e19177576",
+          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
+          "title": "video game details",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    },
+    {
+      "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
+      "title": "✅ IN PROGRESS",
+      "cards": []
+    },
+    {
+      "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+      "title": "⚙️ FINISHED",
+      "cards": [
+        {
+          "id": "b806af47-4321-4cad-a8ff-efb799b39124",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "add new video game page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "d968705a-ddd1-45fe-b10f-d6f38517a1ed",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "My collections page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "8267eb19-1d16-4682-b6dc-78dd4f9eebb7",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Beta mode",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "5ce633d7-533a-4541-aff1-12fecaf77872",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "collection page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "4e0adf0a-4335-455b-889f-6e1155ec3616",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "login / register page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "488e5567-a6bc-47d5-a1a3-01f7d7026ec2",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "See Shadcn and maybe migrate to it",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "b38e227a-7f3e-4f39-8f4d-9e079951633d",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Turn the project in monorepo with PNPM",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "698eb054-7d20-4dc6-8fa7-9a33b3e17d50",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "displayedPrice in feed",
+          "description": "We need to display the real price with shipment and taxes",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "e8f5ec44-38db-4215-82ab-f80918f1ee72",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "set nickName as unique",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "4d1626b2-6f8c-439a-902a-acfc83ee0caf",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add game support type for Platforms (CD, Cartridge, Demat)",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "a1e00732-3cd7-40ef-98f1-66268cb88f40",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add shortform in platforms",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "9d592691-af51-460e-bd0b-82523e339364",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Register backend with firstname, lastname and displayname",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "4875baae-cfb0-49f8-afb2-d452d70be9ae",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Loading state when pulblishing item",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "fb393ae6-8ba9-4464-a176-cf363f110914",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Redo the \"become seller\" page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "98b2c8dc-575d-4254-87d5-cbcb700f86fb",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Redirect to login post confirmation link click.",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "ec9765c2-4411-4f6a-ae09-506ff7a6191c",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "filter \" // \" commentary in openAI request",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "912f8091-1a48-479f-ae46-9fb1c8b7b45a",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "auth, admin, seller Middlewares",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "1eba10e0-0ea7-4f03-af53-765d5fd30e12",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Redirect to previous page after login",
+          "description": "like article",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "94796324-4ecd-4694-a1f2-ee572f3688d3",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Segregate user, profile and personnal information",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "7d33b860-7867-42e5-9724-590fa908c72c",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Change password",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "3c3cc83f-dd27-4599-b7a6-a0cc577c052a",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Remove type of extracontent",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "698b9e29-fca4-40f3-a42f-01449cfcd164",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add space between elements in header",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "816cde2c-07e7-4764-adf8-b5a0252d52bc",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add user avatarUrl",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "da81ca1e-b3cb-43ce-9c11-cafd66d7b097",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "UI product page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "2f7f530d-701a-4b3a-b8ba-904d1062dea2",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Integrate Claude 3 AI to reduce the price and delay",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "347d54b0-ef79-413a-9f8a-45949d056809",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add random feed",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "b8740982-6cdf-491b-ada2-304331ee3322",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Change item structure for more details",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "e3e45f6d-4666-47ef-8615-e9deb26778f9",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Integrate AI to the project",
+          "description": "From a photo, AI must determine some details like\n- Name of the game\n- Platform\n- Edition (Standard by default)\n- State",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "35c2cfd1-91ed-4455-9df8-eaea10d50289",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Platforms management",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "903300ed-0152-4336-8717-9a2eb4b29a10",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Minimum design with Tailwind and Daisy",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "403c6aab-7b89-4f22-861c-08fc9d47c0b4",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add all articles page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "fb251ce7-7bfd-4bf5-afb4-189a14fc7a1f",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add 404 error page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "e8ec3a41-78c4-43bc-bba8-01fa66cb0d11",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Fix prices ( x10 & /10 )",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "b62bea00-1940-486e-b37a-6ddd3a920e92",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Change article visibility",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "d2847917-d385-42de-9620-acca6226cef7",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add clickCount to articles",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "fa5b98c7-bc72-48f1-b466-bc232f18926a",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "fix with explicits ID of models",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "6c52ea59-f789-41eb-915b-5c9a5f905b42",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Delete my article",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "81169d05-c8b9-4680-acfc-d1f378b56b4f",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add sales page for seller",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "ae4e8493-fe87-4bbd-9a6b-0b958003b7f0",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Create user addresses page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "4495f424-ac3e-4a46-883d-8f94cacca25f",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Display image instead download",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
+    }
+  ],
+  "archive": {
+    "lists": [
+      {
+        "id": "751e75e2-7fed-41ef-961b-ec756f2e0c76",
+        "title": "⏳ V3 ideas"
+      }
+    ],
+    "cards": []
+  },
+  "settings": {
+    "labels": []
+  }
+}

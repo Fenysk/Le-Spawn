@@ -1,0 +1,364 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id             String  @id @unique
+    email          String  @unique
+    hashedPassword String  @map("hashed_password")
+    refreshToken   String? @map("hashed_rt")
+    roles          Role[]
+
+    confirmationId String? @map("confirmation_id")
+    confirmed      Boolean @default(false)
+
+    defaultCustomerAddressId String? @unique @map("default_customer_address_id")
+    defaultSellerAddressId   String? @unique @map("default_seller_address_id")
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    Addresses           Address[]
+    Items               Item[]
+    Order               Order[]
+    Profile             Profile?
+    PersonalInformation PersonalInformation?
+    Collections         Collection[]
+}
+
+model Profile {
+    nickName    String?  @map("nick_name")
+    avatarUrl   String?  @map("avatar_url")
+    biography   String?
+    socialLinks String[] @map("social_links")
+
+    userId String @id @unique @map("user_id")
+    User   User   @relation(fields: [userId], references: [id])
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    @@map("profiles")
+}
+
+model PersonalInformation {
+    firstName String? @map("first_name")
+    lastName  String? @map("last_name")
+
+    userId String @id @unique @map("user_id")
+    User   User   @relation(fields: [userId], references: [id])
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    @@map("personal_informations")
+}
+
+model Address {
+    id String @id @unique
+
+    numberAndStreet String  @map("number_and_street")
+    city            String
+    zipCode         String  @map("zip_code")
+    state           String
+    country         Country @default(FR)
+    phoneNumber     String  @map("phone_number")
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    userId String @map("user_id")
+    User   User   @relation(fields: [userId], references: [id])
+
+    Order Order[]
+
+    @@map("addresses")
+}
+
+model Item {
+    id          String @id @unique
+    name        String
+    edition     String
+    region      String
+    description String
+
+    hasBox    Boolean @map("has_box")
+    stateBox  String? @map("state_box")
+    hasGame   Boolean @map("has_game")
+    stateGame String? @map("state_game")
+
+    price  Int
+    images String[]
+
+    isVisible Boolean @default(true) @map("is_visible")
+
+    clickCount Int @default(0) @map("click_count")
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    userId String @map("user_id")
+    User   User?  @relation(fields: [userId], references: [id])
+
+    platformId String   @map("platform_id")
+    Platform   Platform @relation(fields: [platformId], references: [id])
+
+    extraContent Content[]
+
+    Order Order?
+
+    @@map("items")
+}
+
+model Content {
+    id String @id @unique
+
+    name  String
+    state String
+
+    itemId String @map("item_id")
+    Item   Item   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+    @@map("contents")
+}
+
+model Platform {
+    id String @id @unique
+
+    name         String   @unique
+    shortName    String   @unique @map("short_name")
+    generation   Int
+    manufacturer String
+    releaseDate  DateTime @map("release_date")
+
+    squareLogoUrl    String @map("square_logo_url")
+    rectangleLogoUrl String @map("rectangle_logo_url")
+    pictureUrl       String @map("picture_url")
+
+    Items     Item[]
+    VideoGame VideoGame[]
+
+    @@map("platforms")
+}
+
+model Order {
+    id String @id @unique
+
+    itemAmount     Int      @map("item_amount")
+    taxAmount      Int      @default(0) @map("tax_amount")
+    shippingAmount Int      @map("shipping_amount")
+    totalAmount    Int      @map("total_amount")
+    currency       Currency @default(EUR)
+
+    status OrderStatus @default(PENDING)
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    userId String @map("user_id")
+    User   User   @relation(fields: [userId], references: [id])
+
+    itemId String @unique @map("item_id")
+    Item   Item   @relation(fields: [itemId], references: [id])
+
+    addressId String  @map("address_id")
+    Address   Address @relation(fields: [addressId], references: [id])
+
+    Payment  Payment?
+    Shipping Shipping?
+
+    @@unique([userId, itemId])
+    @@map("orders")
+}
+
+model Payment {
+    id String @id @unique
+
+    sessionId  String?       @map("session_id")
+    sessionUrl String?       @map("session_url")
+    status     PaymentStatus @default(INITIATED)
+
+    currency    Currency @default(EUR)
+    amountTotal Int      @map("amount_total")
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    orderId String @unique @map("order_id")
+    Order   Order  @relation(fields: [orderId], references: [id])
+
+    @@map("payments")
+}
+
+model Shipping {
+    id String @id @unique
+
+    carrierName  String         @map("carrier_name")
+    instructions String?
+    status       ShippingStatus @default(INITIATED)
+
+    relayId          String  @map("relay_id")
+    expeditionNumber String? @map("expedition_number")
+    stickerUrl       String? @map("sticker_url")
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    orderId String @unique @map("order_id")
+    Order   Order  @relation(fields: [orderId], references: [id])
+}
+
+model Setting {
+    key   String @id @unique
+    value String
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    @@map("settings")
+}
+
+enum Role {
+    USER
+    ADMIN
+    SELLER
+}
+
+enum Country {
+    FR
+}
+
+enum Currency {
+    EUR
+}
+
+enum OrderStatus {
+    PENDING
+    FINISHED
+    CANCELLED
+}
+
+enum PaymentStatus {
+    INITIATED
+    OPEN
+    COMPLETE
+    EXPIRED
+}
+
+enum ShippingStatus {
+    INITIATED
+    IN_SHIPMENT
+    SHIPPED
+    DELIVERED
+    RETRIEVED
+    CANCELLED
+}
+
+enum State {
+    NEW
+    MINT
+    GOOD
+    BAD
+    BROKEN
+}
+
+// Collection
+
+model Collection {
+    id String @id @unique
+
+    name        String
+    description String?
+
+    isPublic Boolean @default(true) @map("is_visible")
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    userId String @map("user_id")
+    User   User   @relation(fields: [userId], references: [id])
+
+    VideoGames VideoGame[]
+
+    @@map("collections")
+}
+
+model VideoGame {
+    id String @id @unique
+
+    title       String
+    description String?
+    edition     String?
+    region      String?
+    tags        String[]
+    ageRating   Int?     @map("age_rating")
+    editor      String?
+    developer   String?
+
+    releaseDate DateTime? @map("release_date")
+
+    maxMultiplayerLocalPlayers  Int? @map("max_multiplayer_local_players")
+    maxMultiplayerOnlinePlayers Int? @map("max_multiplayer_online_players")
+
+    Box           VideoGameBox?
+    Game          VideoGameGame?
+    extraContents VideoGameExtraContent[]
+
+    initialPurchasePrice    Decimal? @map("initial_purchase_price")
+    negotiatedPurchasePrice Decimal? @map("negotiated_purchase_price")
+    estimatedPrice          Decimal? @map("estimated_value")
+    currency                Currency @default(EUR)
+
+    platformId String   @map("platform_id")
+    Platform   Platform @relation(fields: [platformId], references: [id])
+
+    Collection   Collection? @relation(fields: [collectionId], references: [id])
+    collectionId String?
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    @@map("video_games")
+}
+
+model VideoGameBox {
+    stateBox       State   @map("state_box")
+    photoFrontBox  String? @map("photo_front_side_box")
+    photoBackBox   String? @map("photo_back_side_box")
+    photoSideBox   String? @map("photo_spine_box")
+    photoInsideBox String? @map("photo_inside_box")
+
+    videoGameId String    @id @unique @map("video_game_id")
+    VideoGame   VideoGame @relation(fields: [videoGameId], references: [id], onDelete: Cascade)
+
+    @@map("video_game_boxes")
+}
+
+model VideoGameGame {
+    stateGame      State   @map("state_game")
+    photoFrontGame String? @map("photo_front_game")
+    photoBackGame  String? @map("photo_back_game")
+
+    videoGameId String    @id @unique @map("video_game_id")
+    VideoGame   VideoGame @relation(fields: [videoGameId], references: [id], onDelete: Cascade)
+
+    @@map("video_game_games")
+}
+
+model VideoGameExtraContent {
+    id String @id @unique
+
+    name  String
+    type  String
+    state State
+
+    videoGameId String    @map("video_game_id")
+    VideoGame   VideoGame @relation(fields: [videoGameId], references: [id], onDelete: Cascade)
+
+    @@map("video_game_extra_contents")
+}
