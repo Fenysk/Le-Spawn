@@ -29,8 +29,9 @@ async function bootstrap() {
     });
 
     // Run
-    const PORT = process.env.NEST_PORT || 3621;
-    await app.listen(PORT, () => {
+    const PORT = process.env.PORT || 3621;
+    const HOST = process.env.HOST || '0.0.0.0';
+    await app.listen(PORT, HOST, () => {
         console.log(`Server is running on port ${PORT} 🚀`);
     });
 }
