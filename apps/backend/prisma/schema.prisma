@@ -270,7 +270,7 @@ enum State {
 
 enum GameSupportType {
     CD
-    CATRIDGE
+    CARTRIDGE
     DIGITAL
 }
 
