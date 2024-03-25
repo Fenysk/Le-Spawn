@@ -74,27 +74,9 @@
       "title": "🔧 To fix",
       "cards": [
         {
-          "id": "cf6d27a9-20c5-48e3-b653-d4ad60cdd1b5",
-          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
-          "title": "width element for mobile to avoid zoom",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        },
-        {
           "id": "cd02149b-66b6-4256-a4e8-3f1a70958a10",
           "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
           "title": "Set global middleware to get user without blocking",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        },
-        {
-          "id": "21451830-a8c6-4b89-be70-c5ba7baee8e1",
-          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
-          "title": "handle login error",
           "description": "",
           "labels": [],
           "checkboxes": [],
@@ -173,9 +155,9 @@
       "title": "✅ IN PROGRESS",
       "cards": [
         {
-          "id": "99d56360-9d1f-4ff8-a693-62727cbf0bac",
+          "id": "cf6d27a9-20c5-48e3-b653-d4ad60cdd1b5",
           "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
-          "title": "Add more fields to add game",
+          "title": "width element for mobile to avoid zoom",
           "description": "",
           "labels": [],
           "checkboxes": [],
@@ -187,6 +169,24 @@
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "21451830-a8c6-4b89-be70-c5ba7baee8e1",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "handle login error",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "99d56360-9d1f-4ff8-a693-62727cbf0bac",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add more fields to add game",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "fd71ff86-a272-458f-a30f-082ed4ba029c",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

@@ -24,6 +24,8 @@ export default class UploadService {
                 body: formData,
             });
 
+            if (!response.ok) throw await response.json();
+
             const content = await response.json();
 
             const fileUrl = content.url;

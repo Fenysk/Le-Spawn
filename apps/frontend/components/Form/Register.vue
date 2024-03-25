@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage
+FormControl,
+FormField,
+FormItem,
+FormLabel,
+FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { toTypedSchema } from '@vee-validate/zod';
@@ -29,8 +29,11 @@ const handleRegister = form.handleSubmit(async (credentials) => {
         loading.value = true;
         await authService.register(credentials)
         handleRegisterSuccess();
-    } catch (error) {
-        alert('Erreur lors de la connexion');
+    } catch (error: any) {
+        if (error.statusCode === 409)
+            alert('Un compte existe déjà avec cet email');
+        else
+            alert(error.message);
     } finally {
         loading.value = false;
     }

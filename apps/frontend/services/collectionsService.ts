@@ -21,7 +21,7 @@ export default class CollectionsService {
                 },
             });
 
-            if (!response.ok) throw new Error('Failed to login');
+            if (!response.ok) throw await response.json();
 
             const collections = await response.json();
 
@@ -45,7 +45,7 @@ export default class CollectionsService {
                 },
             });
 
-            if (!response.ok) throw new Error('Failed to login');
+            if (!response.ok) throw await response.json();
 
             const collection = await response.json();
 
@@ -70,7 +70,7 @@ export default class CollectionsService {
                 body: JSON.stringify(data)
             });
 
-            if (!response.ok) throw new Error('Failed to login');
+            if (!response.ok) throw await response.json();
 
             const videoGame = await response.json();
 

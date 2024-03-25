@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage
+FormControl,
+FormField,
+FormItem,
+FormLabel,
+FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { toTypedSchema } from '@vee-validate/zod';
@@ -24,13 +24,20 @@ const form = useForm({
 
 const loading = ref(false);
 const authService = new AuthService();
-const handleLogin = form.handleSubmit(async(credentials) => {
+const handleLogin = form.handleSubmit(async (credentials) => {
     try {
         loading.value = true;
         await authService.login(credentials)
         navigateTo('/');
-    } catch (error) {
-        alert('Erreur lors de la connexion');
+    } catch (error: any) {
+        if (error.statusCode === 401)
+            alert('Email ou mot de passe incorrect');
+        else if (error.statusCode === 403)
+            alert('Votre compte n\'est pas encore validé. Veuillez vérifier vos emails et cliquer sur le lien de confirmation.');
+        else if (error.statusCode === 404)
+            alert('Aucun compte n\'a été trouvé avec cet email');
+        else
+            alert(error.message);
     } finally {
         loading.value = false;
     }

@@ -18,7 +18,7 @@ export default class AuthService {
                 body: JSON.stringify({ ...credentials }),
             });
 
-            if (!response.ok) throw new Error('Failed to register');
+            if (!response.ok) throw await response.json();
 
             return;
         } catch (error) {
@@ -37,7 +37,7 @@ export default class AuthService {
                 body: JSON.stringify({ ...credentials }),
             });
 
-            if (!response.ok) throw new Error('Failed to login');
+            if (!response.ok) throw await response.json();
 
             const tokens = await response.json() as Tokens;
 
@@ -66,6 +66,8 @@ export default class AuthService {
                 },
             });
 
+            if (!response.ok) throw await response.json();
+
             const tokens = await response.json() as Tokens;
             const authStore = useAuthStore();
             authStore.setAccessToken(tokens.accessToken);
@@ -84,7 +86,7 @@ export default class AuthService {
                 method: 'POST',
             });
 
-            if (!response.ok) throw new Error('Failed to confirm account');
+            if (!response.ok) throw await response.json();
 
             return;
         } catch (error) {

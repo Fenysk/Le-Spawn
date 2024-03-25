@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { ConflictException, ForbiddenException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from "argon2";
@@ -20,7 +20,7 @@ export class AuthService {
         const user = await this.userService.getUserByEmail(registerDto.email);
 
         if (user)
-            throw new ForbiddenException('You are already registered');
+            throw new ConflictException('You are already registered');
 
         const hashedPassword = await argon2.hash(registerDto.password);
 
@@ -46,13 +46,16 @@ export class AuthService {
     async login(loginDto: LoginDto): Promise<Tokens> {
         const user = await this.userService.getUserByEmail(loginDto.email);
 
-        if (!user || !user?.confirmed)
-            throw new ForbiddenException('Access denied');
+        if (!user)
+            throw new NotFoundException('User not found');
+
+        if (!user.confirmed)
+            throw new ForbiddenException('Account not confirmed');
 
         const isPasswordValid = await argon2.verify(user?.hashedPassword, loginDto.password);
 
         if (!isPasswordValid)
-            throw new ForbiddenException('Access denied');
+            throw new UnauthorizedException('Bad credentials');
 
         delete user.hashedPassword;
 

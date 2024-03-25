@@ -21,7 +21,7 @@ export default class UsersService {
                 },
             });
 
-            if (!response.ok) throw new Error('Failed to login');
+            if (!response.ok) throw await response.json();
 
             const user = await response.json();
             authStore.setUser(user);

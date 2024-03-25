@@ -38,7 +38,7 @@ const registerSuccess = () => {
             class="flex h-32 grow flex-col items-center justify-center bg-primary p-4 max-lg:order-first max-lg:w-full lg:h-full">
             <Logo :style="'contour'" class="w-1/2" />
             <!-- <Button @click="isRegisterSuccess = !isRegisterSuccess" class="mt-4">Toggle success</Button> -->
-            <div :class="isRegisterSuccess ? 'opacity-100 mt-8 mb-24 lg:mt-12 lg:mb-32 h-32' : 'opacity-0 my-0 h-0'"
+            <div :class="isRegisterSuccess ? 'opacity-100 mt-8 mb-24 lg:mt-12 lg:mb-32 h-32 ' : 'opacity-0 my-0 h-0 overflow-hidden'"
                 class="px-8 text-white transition-all duration-500">
                 <h2 class="text-2xl drop-shadow-flat">Encore une étape...</h2>
                 <p class="mt-2 text-balance">
@@ -55,7 +55,8 @@ const registerSuccess = () => {
         <div v-if="!authStore.loading" class="flex flex-col overflow-hidden transition-all duration-500"
             :class="isRegisterSuccess ? 'lg:w-0 max-lg:h-0 opacity-0' : 'max-lg:h-4/5 lg:w-1/2 opacity-100'">
 
-            <section class="flex flex-col items-center justify-center gap-4 overflow-hidden bg-white transition-all duration-500"
+            <section
+                class="flex flex-col items-center justify-center gap-4 overflow-hidden bg-white transition-all duration-500"
                 :class="isRegisterForm ? 'px-4 h-full' : 'h-0 opacity-0'">
                 <h1 class="text-2xl">
                     Bienvenue
@@ -67,7 +68,8 @@ const registerSuccess = () => {
                 <FormRegister class="mt-4 lg:mt-8" @changeForm="changeForm" @registerSuccess="registerSuccess" />
             </section>
 
-            <section class="flex flex-col items-center justify-center gap-4 overflow-hidden bg-white transition-all duration-500"
+            <section
+                class="flex flex-col items-center justify-center gap-4 overflow-hidden bg-white transition-all duration-500"
                 :class="isRegisterForm ? 'h-0 opacity-0' : 'px-4 h-full'">
                 <h1 class="text-2xl">
                     Retour au spawn

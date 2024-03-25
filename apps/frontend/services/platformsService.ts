@@ -46,7 +46,7 @@ export default class PlatformsService {
 				body: JSON.stringify(data),
 			});
 
-			if (!response.ok) throw new Error('Failed to add platform');
+            if (!response.ok) throw await response.json();
 
 			const newPlatform = await response.json();
 
