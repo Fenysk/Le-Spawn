@@ -1,4 +1,4 @@
-import { State } from "@prisma/client";
+import { Currency, State } from "@prisma/client";
 import { IsDateString, IsNotEmpty, IsNumber, IsOptional } from "class-validator";
 
 export class AddVideoGameDto {
@@ -78,6 +78,9 @@ export class AddVideoGameDto {
 
     @IsOptional()
     estimatedPrice: number;
+
+    @IsOptional()
+    currency: Currency;
 
     @IsNotEmpty()
     platformId: string;

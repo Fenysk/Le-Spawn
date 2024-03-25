@@ -57,7 +57,11 @@ export class VideoGamesService {
             },
             Box: undefined,
             Game: undefined,
-            extraContents: undefined
+            extraContents: undefined,
+            initialPurchasePrice: data.initialPurchasePrice,
+            negotiatedPurchasePrice: data.negotiatedPurchasePrice,
+            estimatedPrice: data.estimatedPrice,
+            currency: data.currency,
         };
 
         const boxData: any = {};

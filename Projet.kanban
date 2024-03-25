@@ -81,6 +81,42 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "cd02149b-66b6-4256-a4e8-3f1a70958a10",
+          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
+          "title": "Set global middleware to get user without blocking",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "21451830-a8c6-4b89-be70-c5ba7baee8e1",
+          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
+          "title": "handle login error",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "5774d0a7-8b52-415b-b388-45c4672ec3c5",
+          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
+          "title": "fix sidebar when not logged in homepage",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "f0c1d425-3ec5-4fa8-81c1-e8c35685ed67",
+          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
+          "title": "Photos and carousel in new game",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
@@ -101,6 +137,15 @@
           "id": "a6c23f38-cd6c-4156-8444-3993f4f03bac",
           "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
           "title": "Add beta code",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "a5dd60a2-a27a-46dc-a85b-c3adb00b8406",
+          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
+          "title": "Remove many collections, just setup one",
           "description": "",
           "labels": [],
           "checkboxes": [],
@@ -126,7 +171,17 @@
     {
       "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
       "title": "✅ IN PROGRESS",
-      "cards": []
+      "cards": [
+        {
+          "id": "99d56360-9d1f-4ff8-a693-62727cbf0bac",
+          "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
+          "title": "Add more fields to add game",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
     },
     {
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
