@@ -26,8 +26,8 @@ const setupLinks = () => {
                 action: null
             },
             {
-                title: 'Collections',
-                path: '/collections',
+                title: 'Ma collection',
+                path: `/collections/${user.value.Collections[0].id}`,
                 icon: 'mingcute:book-5-line',
                 order: 4,
                 action: null

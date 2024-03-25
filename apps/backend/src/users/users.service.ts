@@ -53,6 +53,7 @@ export class UsersService {
                 Addresses: true,
                 Profile: true,
                 PersonalInformation: true,
+                Collections: true
             }
         });
 

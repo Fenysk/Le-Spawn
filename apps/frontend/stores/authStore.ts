@@ -67,5 +67,6 @@ export type User = {
         userId: string;
         createdAt: string;
         updatedAt: string;
-    }
+    },
+    Collections: any[];
 }

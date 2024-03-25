@@ -105,15 +105,6 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
-        },
-        {
-          "id": "a5dd60a2-a27a-46dc-a85b-c3adb00b8406",
-          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
-          "title": "Remove many collections, just setup one",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
         }
       ]
     },
@@ -141,6 +132,15 @@
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "a5dd60a2-a27a-46dc-a85b-c3adb00b8406",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Remove many collections, just setup one",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "5774d0a7-8b52-415b-b388-45c4672ec3c5",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
