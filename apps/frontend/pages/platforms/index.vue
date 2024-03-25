@@ -1,4 +1,8 @@
 <script setup lang='ts'>
+definePageMeta({
+    middleware: ['auth', 'admin'],
+});
+
 import PlatformsService, { type Platform } from '~/services/platformsService';
 
 const loading = ref(false);
