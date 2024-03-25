@@ -23,12 +23,17 @@ onMounted(fetchUsersCollections);
 
 const authStore = useAuthStore();
 const user = computed(() => authStore.getUser());
+
+const { currentQuote, generateRandomQuote } = useRandomQuotes();
+onMounted(() => {
+    generateRandomQuote();
+});
 </script>
 
 <template>
     <div class="page">
         <header>
-            <p class="text-zinc-700">Salut {{ user?.Profile.nickName || 'PNJ' }} !</p>
+            <p class="text-zinc-700">{{ currentQuote }}</p>
             <h1 class="mt-2 text-2xl">Collections</h1>
         </header>
 

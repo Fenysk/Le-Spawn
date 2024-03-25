@@ -1,13 +1,9 @@
 <script setup lang='ts'>
-
 definePageMeta({
     middleware: ['auth']
 })
 
 const loading = ref(false);
-
-const authStore = useAuthStore();
-const user = computed(() => authStore.getUser());
 
 const { currentQuote, generateRandomQuote } = useRandomQuotes();
 onMounted(() => {
@@ -19,19 +15,17 @@ onMounted(() => {
     <div class="page">
         <header>
             <p class="text-zinc-700">{{ currentQuote }}</p>
-            <h1 class="mt-2 text-2xl">Dashboard</h1>
+            <h1 class="mt-2 text-2xl">Paramètres</h1>
         </header>
-        
         <main>
-            <div>
-                tabs : Today, This week, This month
-            </div>
+            <p>C'est ici que vous pouvez modifier vos paramètres</p>
+
             <section>
-                Chart
+                This is my section
             </section>
         </main>
         <footer>
-            I'll have 3 differents cards
+            This is my footer
         </footer>
     </div>
 </template>

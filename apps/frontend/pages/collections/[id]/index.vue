@@ -34,12 +34,17 @@ const handleRefreshCollection = () => {
     collection.value = null;
     fetchCollection();
 };
+
+const { currentQuote, generateRandomQuote } = useRandomQuotes();
+onMounted(() => {
+    generateRandomQuote();
+});
 </script>
 
 <template>
     <div class="page" v-if="!loading">
         <header>
-            <p class="text-zinc-700">Salut {{ user?.Profile.nickName || 'PNJ' }} !</p>
+            <p class="text-zinc-700">{{ currentQuote }}</p>
             <h1 class="mt-2 text-2xl">{{ collection?.name }}</h1>
         </header>
 

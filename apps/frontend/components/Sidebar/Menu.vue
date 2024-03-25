@@ -18,13 +18,13 @@ const setupLinks = () => {
 
     if (user.value)
         items.value.push(
-            {
-                title: 'Dashoard',
-                path: '/dashboard',
-                icon: 'mingcute:monitor-line',
-                order: 3,
-                action: null
-            },
+            // {
+            //     title: 'Dashoard',
+            //     path: '/dashboard',
+            //     icon: 'mingcute:monitor-line',
+            //     order: 3,
+            //     action: null
+            // },
             {
                 title: 'Ma collection',
                 path: `/collections/${user.value.Collections[0].id}`,
@@ -33,8 +33,8 @@ const setupLinks = () => {
                 action: null
             },
             {
-                title: 'Settings',
-                path: '/settings',
+                title: 'Paramètres',
+                path: '/parametres',
                 icon: 'mingcute:settings-3-line',
                 order: 7,
                 action: null
