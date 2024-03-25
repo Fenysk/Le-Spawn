@@ -12,7 +12,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     if (authStore.getAccessToken()) {
         authStore.setLoading(false);
         return true;
-    }    
+    }
 
     if (!process.client) {
         authStore.setLoading(false);
@@ -35,5 +35,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         }
     }
 
+    authStore.setLoading(false);
     return navigateTo(`/bienvenue?login=${loginMode}&redirect=${encodeURIComponent(to.fullPath)}`);
 });

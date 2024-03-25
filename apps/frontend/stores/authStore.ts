@@ -1,21 +1,31 @@
+import UsersService from "~/services/usersService"
+
 export const useAuthStore = defineStore('auth', () => {
     const user = ref<User | null>(null)
     const accessToken = ref<string | null>(null)
     const loading = ref<boolean>(false)
+    const usersService = new UsersService();
 
     const setLoading = (value: boolean) => {
         loading.value = value
     }
 
-    const setUser = (newUser: User) => {
+    const setUser = (newUser: User | null) => {
         user.value = newUser
     }
 
     const getUser = () => {
+        if (!user.value) fetchUser()
+
         return user.value
     }
 
-    const setAccessToken = (token: string) => {
+    const fetchUser = async () => {
+        const user = await usersService.getMyProfile();
+        setUser(user);
+    }
+
+    const setAccessToken = async (token: string | null) => {
         accessToken.value = token
     }
 

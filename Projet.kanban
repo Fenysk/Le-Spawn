@@ -83,15 +83,6 @@
           "comments": []
         },
         {
-          "id": "5774d0a7-8b52-415b-b388-45c4672ec3c5",
-          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
-          "title": "fix sidebar when not logged in homepage",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        },
-        {
           "id": "f0c1d425-3ec5-4fa8-81c1-e8c35685ed67",
           "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
           "title": "Photos and carousel in new game",
@@ -159,6 +150,15 @@
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "5774d0a7-8b52-415b-b388-45c4672ec3c5",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "fix sidebar when not logged in homepage",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "cf6d27a9-20c5-48e3-b653-d4ad60cdd1b5",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

@@ -1,51 +1,110 @@
 <script setup lang="ts">
-
-const items = ref([
-    {
-        title: 'Dashoard',
-        path: '/dashboard',
-        icon: 'mingcute:monitor-line',
-        order: 1
-    },
-    {
-        title: 'Collections',
-        path: '/collections',
-        icon: 'mingcute:book-5-line',
-        order: 2
-    },
-    {
-        title: 'Settings',
-        path: '/settings',
-        icon: 'mingcute:settings-3-line',
-        order: 5
-    }
-])
-
-watch(items.value, () => {
-    items.value.sort((a, b) => a.order - b.order)
-})
+import AuthService from '~/services/authService';
 
 const authStore = useAuthStore()
 const user = computed(() => authStore.getUser())
 
-if (user.value?.roles.includes('ADMIN'))
-    items.value.push(
-        {
-            title: 'Platformes',
-            path: '/platformes',
-            icon: 'mingcute:game-2-line',
-            order: 3
-        },
-        {
-            title: 'Users',
-            path: '/users',
-            icon: 'mingcute:user-3-line',
-            order: 4
-        }
-    )
+const items = ref(<Link[]>[])
+type Link = {
+    title: string
+    path: string | null
+    icon: string
+    order: number
+    action: any
+}
+
+const setupLinks = () => {
+    items.value = [];
+
+    if (user.value)
+        items.value.push(
+            {
+                title: 'Dashoard',
+                path: '/dashboard',
+                icon: 'mingcute:monitor-line',
+                order: 3,
+                action: null
+            },
+            {
+                title: 'Collections',
+                path: '/collections',
+                icon: 'mingcute:book-5-line',
+                order: 4,
+                action: null
+            },
+            {
+                title: 'Settings',
+                path: '/settings',
+                icon: 'mingcute:settings-3-line',
+                order: 7,
+                action: null
+            },
+            {
+                title: 'Logout',
+                path: null,
+                icon: 'mingcute:exit-door-line',
+                order: 8,
+                action: handleLogout
+            }
+        )
+
+    if (user.value?.roles.includes('ADMIN'))
+        items.value.push(
+            {
+                title: 'Platformes',
+                path: '/platformes',
+                icon: 'mingcute:game-2-line',
+                order: 5,
+                action: null
+            },
+            {
+                title: 'Users',
+                path: '/users',
+                icon: 'mingcute:user-3-line',
+                order: 6,
+                action: null
+            }
+        )
+
+    if (!user.value)
+        items.value.push(
+            {
+                title: 'Accueil',
+                path: '/',
+                icon: 'mingcute:home-7-line',
+                order: 1,
+                action: null
+            },
+            {
+                title: 'Mon compte',
+                path: '/bienvenue',
+                icon: 'mingcute:emoji-line',
+                order: 2,
+                action: null
+            }
+        )
+}
+
+onMounted(setupLinks)
+
+watch(user, () => {
+    setupLinks()
+})
+
+watch(items, () => {
+    items.value.sort((a, b) => a.order - b.order)
+})
 
 const emit = defineEmits(['closeMenu'])
 const handleEmitCloseMenu = () => emit('closeMenu')
+
+const authService = new AuthService()
+const router = useRouter()
+const handleLogout = () => {
+    authService.logout()
+    handleEmitCloseMenu()
+    router.push('/')
+}
 </script>
 
 <template>
@@ -60,7 +119,8 @@ const handleEmitCloseMenu = () => emit('closeMenu')
             <div class="grid gap-2">
 
                 <div v-for="(item, index) in items" :key="index">
-                    <NuxtLink :to="item.path" @click="handleEmitCloseMenu"
+                    <NuxtLink :to="item.path ? item.path : ''"
+                     @click="item.action ? item.action() : handleEmitCloseMenu"
                         class="flex cursor-pointer items-center gap-4 rounded px-2 py-1 text-2xl transition hover:bg-neutral-100 hover:bg-primary-foreground hover:text-black lg:gap-2 lg:text-lg">
                         <Icon :name="item.icon" />
                         <span>{{ item.title }}</span>

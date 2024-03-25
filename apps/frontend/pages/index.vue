@@ -1,4 +1,8 @@
 <script setup lang='ts'>
+definePageMeta({
+    middleware: ['get-user-details']
+})
+
 const loading = ref(false);
 </script>
 

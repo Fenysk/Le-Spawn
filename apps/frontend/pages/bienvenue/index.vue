@@ -13,7 +13,6 @@ const redirectUrl = route.query.redirect;
 const login = route.query.login;
 
 if (redirectUrl) {
-    console.log('redirectUrl', redirectUrl);
     const urlToNavigate = Array.isArray(redirectUrl) ? redirectUrl[0] : redirectUrl;
     if (urlToNavigate) {
         router.push(decodeURIComponent(urlToNavigate));

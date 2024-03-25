@@ -52,6 +52,33 @@ export default class AuthService {
         }
     }
 
+    async logout(): Promise<any> {
+
+        const authStore = useAuthStore();
+        const accessToken = authStore.getAccessToken();
+
+        try {
+            const response = await fetch(`${this.API_URL}/auth/disconnect`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+
+            if (!response.ok) throw await response.json();
+
+            localStorage.removeItem('refreshToken');
+
+            authStore.setAccessToken(null);
+            authStore.setUser(null);
+
+            return;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async refreshTokens(): Promise<any> {
 
         try {
@@ -69,6 +96,7 @@ export default class AuthService {
             if (!response.ok) throw await response.json();
 
             const tokens = await response.json() as Tokens;
+
             const authStore = useAuthStore();
             authStore.setAccessToken(tokens.accessToken);
 
