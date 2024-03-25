@@ -50,7 +50,7 @@ const handleRegisterSuccess = () => {
 </script>
 
 <template>
-    <form @submit="handleRegister" class="w-2/3">
+    <form @submit="handleRegister" class="w-full max-w-[400px]">
 
         <FormField v-slot="{ componentField }" name="nickName">
             <FormItem>

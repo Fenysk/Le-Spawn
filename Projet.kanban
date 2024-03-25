@@ -153,22 +153,21 @@
     {
       "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
       "title": "✅ IN PROGRESS",
-      "cards": [
-        {
-          "id": "cf6d27a9-20c5-48e3-b653-d4ad60cdd1b5",
-          "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
-          "title": "width element for mobile to avoid zoom",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        }
-      ]
+      "cards": []
     },
     {
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "cf6d27a9-20c5-48e3-b653-d4ad60cdd1b5",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "width element for mobile to avoid zoom",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "21451830-a8c6-4b89-be70-c5ba7baee8e1",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

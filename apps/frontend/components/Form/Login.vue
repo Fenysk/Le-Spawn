@@ -50,7 +50,7 @@ const handleChangeForm = () => {
 </script>
 
 <template>
-    <form @submit="handleLogin" class="w-2/3">
+    <form @submit="handleLogin" class="w-full max-w-[400px]">
         <FormField v-slot="{ componentField }" name="email">
             <FormItem>
                 <FormLabel>Email</FormLabel>
