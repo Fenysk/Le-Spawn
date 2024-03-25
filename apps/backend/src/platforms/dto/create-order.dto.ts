@@ -1,3 +1,4 @@
+import { GameSupportType } from "@prisma/client";
 import { IsDateString, IsNotEmpty } from "class-validator";
 
 export class CreatePlatformDto {
@@ -6,6 +7,9 @@ export class CreatePlatformDto {
 
     @IsNotEmpty()
     shortName: string;
+
+    @IsNotEmpty()
+    gameSupportType: GameSupportType;
 
     @IsNotEmpty()
     generation: number;

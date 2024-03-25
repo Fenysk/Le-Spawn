@@ -1,19 +1,19 @@
 <script lang="ts" setup>
 import { Button } from '@/components/ui/button';
 import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
+Dialog,
+DialogContent,
+DialogHeader,
+DialogTitle,
+DialogTrigger,
 } from '@/components/ui/dialog';
 import {
-    Drawer,
-    DrawerClose,
-    DrawerContent,
-    DrawerHeader,
-    DrawerTitle,
-    DrawerTrigger,
+Drawer,
+DrawerClose,
+DrawerContent,
+DrawerHeader,
+DrawerTitle,
+DrawerTrigger,
 } from '@/components/ui/drawer';
 import { createReusableTemplate, useMediaQuery } from '@vueuse/core';
 import { ref } from 'vue';
@@ -24,33 +24,29 @@ const isOpen = ref(false)
 
 const [TriggerTemplate, TriggerContent] = createReusableTemplate()
 const [TitleTemplate, TitleContent] = createReusableTemplate()
-const [NewGameTemplate, GameForm] = createReusableTemplate()
+const [NewPlatformTemplate, PlatformForm] = createReusableTemplate()
 
-defineProps({
-    collectionId: String,
-})
-
-const emit = defineEmits(['refreshCollection']);
-const handleAddingNewGameSuccess = () => {
+const emit = defineEmits(['refreshPlatforms']);
+const handleAddingNewPlatformSuccess = () => {
     isOpen.value = false
-    emit('refreshCollection')
+    emit('refreshPlatforms')
 }
 </script>
 
 <template>
 
     <TitleTemplate>
-        <span class="font-acephimere">Ajouter un jeu</span>
+        <span class="font-acephimere">Ajouter une plateforme</span>
     </TitleTemplate>
 
-    <NewGameTemplate>
-        <CollectionItemVideoGameButtonAddForm :collectionId @addingNewGameSuccess="handleAddingNewGameSuccess" />
-    </NewGameTemplate>
+    <NewPlatformTemplate>
+        <PlatformButtonAddForm @addNewPlatformSuccess="handleAddingNewPlatformSuccess" />
+    </NewPlatformTemplate>
 
     <TriggerTemplate>
-        <Button class="h-fit w-fit p-2">
+        <Button class="h-fit w-full p-2">
             <Icon name="mingcute:add-fill" size="16" />
-            <span class="ml-2 hidden lg:block">Ajouter un jeu</span>
+            <span class="ml-2">Ajouter une plateforme</span>
         </Button>
     </TriggerTemplate>
 
@@ -64,7 +60,7 @@ const handleAddingNewGameSuccess = () => {
                     <TitleContent />
                 </DialogTitle>
             </DialogHeader>
-            <GameForm />
+            <PlatformForm />
         </DialogContent>
     </Dialog>
 
@@ -78,7 +74,7 @@ const handleAddingNewGameSuccess = () => {
                     <TitleContent />
                 </DrawerTitle>
             </DrawerHeader>
-            <GameForm />
+            <PlatformForm />
             <DrawerFooter class="pt-2">
                 <DrawerClose as-child>
                     <Button variant="outline">

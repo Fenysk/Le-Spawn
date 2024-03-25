@@ -132,6 +132,7 @@ model Platform {
 
     name         String   @unique
     shortName    String   @unique @map("short_name")
+    gameSupportType GameSupportType @map("game_support_type")
     generation   Int
     manufacturer String
     releaseDate  DateTime @map("release_date")
@@ -265,6 +266,12 @@ enum State {
     GOOD
     BAD
     BROKEN
+}
+
+enum GameSupportType {
+    CD
+    CATRIDGE
+    DIGITAL
 }
 
 // Collection

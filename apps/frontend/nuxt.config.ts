@@ -12,6 +12,10 @@ export default defineNuxtConfig({
         storesDirs: ['./stores/**'],
     },
 
+    routeRules: {
+        '/': { ssr: true },
+    },
+
     runtimeConfig: {
         public: {
             API_URL: process.env.API_URL,
@@ -34,5 +38,7 @@ export default defineNuxtConfig({
          * @default "./components/ui"
          */
         componentDir: './components/ui'
-    }
+    },
+
+    ssr: false,
 })

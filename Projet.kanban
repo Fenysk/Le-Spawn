@@ -74,9 +74,9 @@
       "title": "🔧 To fix",
       "cards": [
         {
-          "id": "5babd9ce-467c-40ad-acaf-fdb8e1d413f2",
+          "id": "cf6d27a9-20c5-48e3-b653-d4ad60cdd1b5",
           "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
-          "title": "Fix handling all errors",
+          "title": "width element for mobile to avoid zoom",
           "description": "",
           "labels": [],
           "checkboxes": [],
@@ -92,6 +92,15 @@
           "id": "b04a8cac-5884-4ae3-a825-dae4f079fcbe",
           "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
           "title": "Define terms and conditions and privacy policy",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "a6c23f38-cd6c-4156-8444-3993f4f03bac",
+          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
+          "title": "Add beta code",
           "description": "",
           "labels": [],
           "checkboxes": [],
@@ -123,6 +132,15 @@
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "fd71ff86-a272-458f-a30f-082ed4ba029c",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add platform form",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "b806af47-4321-4cad-a8ff-efb799b39124",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
