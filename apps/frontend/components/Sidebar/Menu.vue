@@ -31,8 +31,8 @@ const user = computed(() => authStore.getUser())
 if (user.value?.roles.includes('ADMIN'))
     items.value.push(
         {
-            title: 'Platforms',
-            path: '/platforms',
+            title: 'Platformes',
+            path: '/platformes',
             icon: 'mingcute:game-2-line',
             order: 3
         },
