@@ -16,7 +16,7 @@ type Link = {
 const setupLinks = () => {
     items.value = [];
 
-    if (user.value)
+    if (user.value && user.value.Collections?.length > 0)
         items.value.push(
             // {
             //     title: 'Dashoard',
@@ -86,10 +86,6 @@ const setupLinks = () => {
 }
 
 onMounted(setupLinks)
-
-watch(user, () => {
-    setupLinks()
-})
 
 watch(items, () => {
     items.value.sort((a, b) => a.order - b.order)

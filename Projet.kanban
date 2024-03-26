@@ -129,6 +129,15 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "d158f2de-a4b3-4f36-ab26-db17940942f6",
+          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
+          "title": "Integrate AI to front",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },

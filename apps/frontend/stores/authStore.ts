@@ -53,7 +53,7 @@ export type User = {
     updatedAt: string;
     Addresses: any[];
     Profile: {
-        nickName: string | null;
+        nickName: string;
         avatarUrl: string | null;
         biography: string | null;
         socialLinks: string[];
