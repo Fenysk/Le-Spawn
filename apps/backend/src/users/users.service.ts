@@ -133,6 +133,11 @@ export class UsersService {
                     }
                 }
             },
+            include: {
+                Profile: true,
+                PersonalInformation: true,
+                Collections: true
+            }
         });
 
         return updatedUser;
