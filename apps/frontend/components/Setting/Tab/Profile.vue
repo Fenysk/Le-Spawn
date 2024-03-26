@@ -132,10 +132,10 @@ const handleSubmitProfileSuccess = () => {
             <div class="flex flex-col gap-2">
                 <div v-for="(socialLink, index) in socialLinks" :key="index"
                     class="flex items-center justify-between gap-2">
-                    <Input type="text" v-model="socialLinks[index]" />
+                    <Input type="text" v-model="socialLinks[index]" disabled />
                     <Button variant="secondary" type="button" @click="removeSocialLink(index)">
-                        <Icon name="mingcute:delete-2-line" class="mr-2 h-4 w-4" />
-                        Supprimer
+                        <Icon name="mingcute:delete-2-line" class="h-4 w-4" />
+                        <span class="ml-2 hidden lg:flex">Supprimer</span>
                     </Button>
                 </div>
             </div>
@@ -146,7 +146,8 @@ const handleSubmitProfileSuccess = () => {
                     </FormControl>
                     <FormMessage />
                     <Button type="button" @click="addSocialLink">
-                        Ajouter
+                        <Icon name="mingcute:add-fill" class="h-4 w-4" />
+                        <span class="hidden lg:flex">Ajouter</span>
                     </Button>
                 </FormField>
             </div>

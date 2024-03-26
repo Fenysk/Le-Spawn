@@ -39,9 +39,6 @@ const handleProfileSuccess = () => {
                     <TabsTrigger value="profile">
                         Profile
                     </TabsTrigger>
-                    <TabsTrigger value="personalInformations">
-                        Informations personnelles
-                    </TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="profile" class="max-w-[600px]">
@@ -49,24 +46,11 @@ const handleProfileSuccess = () => {
                         <CardHeader>
                             <CardTitle class="font-acephimere">Profile</CardTitle>
                             <CardDescription>
-                                Change your profile
+                                Votre profil est visible par les autres utilisateurs
                             </CardDescription>
                         </CardHeader>
                         <CardContent class="space-y-2">
                             <SettingTabProfile @submitProfileSuccess="handleProfileSuccess" />
-                        </CardContent>
-                    </Card>
-                </TabsContent>
-                <TabsContent value="personalInformations" class="max-w-[600px]">
-                    <Card>
-                        <CardHeader>
-                            <CardTitle class="font-acephimere">Informations personnelles</CardTitle>
-                            <CardDescription>
-                                Change your personal informations
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent class="space-y-2">
-                            <SettingTabPersonalInformations />
                         </CardContent>
                     </Card>
                 </TabsContent>
