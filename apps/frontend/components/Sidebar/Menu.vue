@@ -76,6 +76,13 @@ const setupLinks = () => {
             icon: 'mingcute:user-3-line',
             order: 6,
             action: null
+        },
+        {
+            title: 'Statistiques',
+            path: '/statistiques',
+            icon: 'mingcute:chart-vertical-line',
+            order: 7,
+            action: null
         }
     ]
 

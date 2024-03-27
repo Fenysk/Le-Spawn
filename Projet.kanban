@@ -81,6 +81,15 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "59cbbfb5-bff9-4337-93ea-d5aa84e04fdc",
+          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
+          "title": "Photos should be compressed in front",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
@@ -144,22 +153,21 @@
     {
       "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
       "title": "✅ IN PROGRESS",
-      "cards": [
-        {
-          "id": "44b46c24-48cf-420d-bbf4-2cdec687ba50",
-          "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
-          "title": "Stats page",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        }
-      ]
+      "cards": []
     },
     {
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "44b46c24-48cf-420d-bbf4-2cdec687ba50",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Stats page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "f4e5ae52-3a4f-4f8d-9d23-f970f3cfc990",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

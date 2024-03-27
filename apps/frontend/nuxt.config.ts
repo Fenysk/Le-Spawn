@@ -5,7 +5,8 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         'shadcn-nuxt',
         'nuxt-icon',
-        '@pinia/nuxt'
+        '@pinia/nuxt',
+        'nuxt-highcharts',
     ],
 
     pinia: {

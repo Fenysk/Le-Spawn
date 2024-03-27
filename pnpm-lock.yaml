@@ -198,6 +198,9 @@ importers:
       nuxt:
         specifier: ^3.10.3
         version: 3.10.3(typescript@5.4.2)(vite@5.1.6)
+      nuxt-highcharts:
+        specifier: ^3.1.1
+        version: 3.1.1
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.2)(vue@3.4.21)
@@ -1914,6 +1917,12 @@ packages:
       - '@vue/composition-api'
       - vue
     dev: false
+
+  /@highcharts/map-collection@2.1.0:
+    resolution: {integrity: sha512-oS7ELhgvltY7OVPG4EFHHcdLRSKu2Fwvg2B9eXRo/Get4rZPUoLwv5i+bUcPb5JYLxzhHVNniuw01yMJAnXJ8g==}
+    requiresBuild: true
+    dev: false
+    optional: true
 
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -7493,6 +7502,10 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /highcharts@11.4.0:
+    resolution: {integrity: sha512-f5POJz2WdHW6SNT4P2CoMjsgcX5F5sJXtdfWLQCaNP9JG0nG5TSGG7+A6vzHGzcDkTPM72EQbRQofNZHaRTUPg==}
+    dev: false
+
   /hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
 
@@ -9581,6 +9594,14 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
 
+  /nuxt-highcharts@3.1.1:
+    resolution: {integrity: sha512-bHUl8OF1WqJ0vUlDl4AAJHk1H6+sffSAMmB3xGu0oZcav93CQMVjxkjsGabXS321KVOyz+BbOrur3UtXYM4AIA==}
+    dependencies:
+      highcharts: 11.4.0
+    optionalDependencies:
+      '@highcharts/map-collection': 2.1.0
+    dev: false
+
   /nuxt-icon@0.6.9(nuxt@3.10.3)(vite@5.1.6)(vue@3.4.21):
     resolution: {integrity: sha512-l80F5sIVdwlQPfw/9RFuhVE1Pi3NM3wbgePxDZkgYZe5XOpg4ZznhgObLRyAFFjCeU7XVbFMBe09uJBRM4tuvg==}
     dependencies:
@@ -11042,6 +11063,7 @@ packages:
 
   /safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
+    requiresBuild: true
 
   /sax@1.3.0:
     resolution: {integrity: sha512-0s+oAmw9zLl1V1cS9BtZN7JAd0cW5e0QH4W3LWEK6a4LaLEA2OTpGYWDY+6XasBLtz6wkm3u1xRw95mRuJ59WA==}
