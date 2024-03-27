@@ -29,6 +29,7 @@ model User {
     Profile             Profile?
     PersonalInformation PersonalInformation?
     Collections         Collection[]
+    Statistic           Statistic[]
 }
 
 model Profile {
@@ -130,12 +131,12 @@ model Content {
 model Platform {
     id String @id @unique
 
-    name         String   @unique
-    shortName    String   @unique @map("short_name")
+    name            String          @unique
+    shortName       String          @unique @map("short_name")
     gameSupportType GameSupportType @map("game_support_type")
-    generation   Int
-    manufacturer String
-    releaseDate  DateTime @map("release_date")
+    generation      Int
+    manufacturer    String
+    releaseDate     DateTime        @map("release_date")
 
     squareLogoUrl    String @map("square_logo_url")
     rectangleLogoUrl String @map("rectangle_logo_url")
@@ -222,6 +223,20 @@ model Setting {
     updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 
     @@map("settings")
+}
+
+model Statistic {
+    id String @id @unique
+
+    type  String
+    value Int?   @default(1)
+
+    createdAt DateTime @default(now()) @map("created_at")
+
+    userId String? @map("user_id")
+    User   User?   @relation(fields: [userId], references: [id])
+
+    @@map("statistics")
 }
 
 enum Role {

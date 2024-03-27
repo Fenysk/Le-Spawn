@@ -146,9 +146,9 @@
       "title": "✅ IN PROGRESS",
       "cards": [
         {
-          "id": "f4e5ae52-3a4f-4f8d-9d23-f970f3cfc990",
+          "id": "44b46c24-48cf-420d-bbf4-2cdec687ba50",
           "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
-          "title": "Setting page",
+          "title": "Stats page",
           "description": "",
           "labels": [],
           "checkboxes": [],
@@ -160,6 +160,15 @@
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "f4e5ae52-3a4f-4f8d-9d23-f970f3cfc990",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Setting page",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "348bf5c3-84ed-4b81-890d-9b0c318245ff",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

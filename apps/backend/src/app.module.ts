@@ -18,6 +18,7 @@ import { PlatformsModule } from './platforms/platforms.module';
 import { AnalyzeModule } from './analyze/analyze.module';
 import { CollectionsModule } from './collections/collections.module';
 import { BarcodeModule } from './barcode/barcode.module';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @Module({
     imports: [
@@ -39,7 +40,8 @@ import { BarcodeModule } from './barcode/barcode.module';
         PlatformsModule,
         AnalyzeModule,
         CollectionsModule,
-        BarcodeModule
+        BarcodeModule,
+        StatisticsModule
     ],
     controllers: [AppController],
     providers: [AppService],
