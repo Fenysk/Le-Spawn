@@ -30,4 +30,12 @@ export class AnalyzeController {
         return this.analyzeService.analyzeGamePhotosWithAnthropicSonnet(language, photos);
     }
 
+    @Post('photos/game/anthropic-haiku')
+    async analyzeGamePhotosWithAnthropicHaiku(
+        @Body('language') language: string,
+        @Body('photos') photos: string[]
+    ) {
+        return this.analyzeService.analyzeGamePhotosWithAnthropicHaiku(language, photos);
+    }
+
 }

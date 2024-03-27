@@ -1,5 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import Axios from "axios";
 import { GameResponseDto } from "../dto/game-response.dto";
@@ -37,26 +37,39 @@ export class AnthropicService {
 
     }
 
-    async askToSonnet(prompt: string, images: string[]) {
-        const imagesContent = images && images.length > 0 ? await Promise.all(images.map(async (image) => {
+    async askToClaude(prompt: string, images: string[], model: string) {
+        const imagesContent = images && images.length > 0 ? await Promise.all(images.flatMap(async (image, index) => {
+            try {
+                const { media_type, data } = await this.convertImageUrlToBase64(image);
 
-            const { media_type, data } = await this.convertImageUrlToBase64(image);
-
-            return {
-                type: "image",
-                source: {
-                    type: "base64",
-                    media_type,
-                    data
-                }
-            };
+                return [
+                    {
+                        type: "text",
+                        text: `Image with id ${index + 1}:`
+                    },
+                    {
+                        type: "image",
+                        source: {
+                            type: "base64",
+                            media_type,
+                            data
+                        }
+                    }
+                ];
+            } catch (error) {
+                throw new Error('Error while converting image to base64');
+            }
         })) : [];
+
+        if (!imagesContent.length) throw new NotFoundException('Images not found');
+
+        const flatImagesContent = imagesContent.flat();
 
         const messages: any = [
             {
                 role: "user",
                 content: [
-                    ...imagesContent,
+                    ...flatImagesContent,
                     {
                         type: "text",
                         text: prompt
@@ -66,7 +79,7 @@ export class AnthropicService {
         ];
 
         const anthropicResponse = await this.anthropic.messages.create({
-            model: "claude-3-sonnet-20240229",
+            model,
             max_tokens: 1000,
             temperature: 0.5,
             system: `You're a robot that analyzes images and returns data in JSON format.`,

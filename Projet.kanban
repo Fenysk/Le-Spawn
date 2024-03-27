@@ -114,6 +114,24 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "7d728b33-51eb-489a-9b8a-1a50d5d94451",
+          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
+          "title": "Add refresh button to stats",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "5536df5c-e13c-4b9e-9fc5-891420167e81",
+          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
+          "title": "Add AI money counter",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
@@ -159,6 +177,15 @@
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "5f9639e3-16d7-4b8a-b3df-0aa33778ef37",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Upgrade AI to back",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "44b46c24-48cf-420d-bbf4-2cdec687ba50",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
