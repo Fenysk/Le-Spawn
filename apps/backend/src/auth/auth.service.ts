@@ -3,6 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import * as argon2 from "argon2";
 import { EmailService } from 'src/email/email.service';
+import { StatType } from 'src/statistics/enums/stat-type.enum';
+import { StatisticsService } from 'src/statistics/statistics.service';
 import { UsersService } from '../users/users.service';
 import { LoginDto, RegisterDto } from './dto';
 import { Tokens } from './types';
@@ -14,6 +16,7 @@ export class AuthService {
         private readonly configService: ConfigService,
         private readonly jwtService: JwtService,
         private readonly emailService: EmailService,
+        private readonly statisticsService: StatisticsService,
     ) { }
 
     async register(registerDto: RegisterDto): Promise<any> {
@@ -62,6 +65,8 @@ export class AuthService {
         const tokens = await this.getTokens(user);
         await this.updateRefreshTokenHash(user.id, tokens.refreshToken);
 
+        await this.statisticsService.addNewStatistic({ type: StatType.LOGIN }, user.id);
+
         return tokens;
     }
 
@@ -69,6 +74,8 @@ export class AuthService {
         await this.userService.updateUser(userId, {
             refreshToken: null
         });
+
+        await this.statisticsService.addNewStatistic({ type: StatType.LOGOUT }, userId);
     }
 
     async refreshTokens(userId: string, refreshToken: string): Promise<Tokens> {

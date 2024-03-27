@@ -1,7 +1,8 @@
-import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { ForbiddenException, Injectable } from '@nestjs/common';
 import { UUIDService } from 'src/common/uuid/uuid.service';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { AddNewStatisticDto } from './dto/addNewStat.dto';
+import { GetStatisticDto } from './dto/getStat.dto';
 import { StatType } from './enums/stat-type.enum';
 
 @Injectable()
@@ -12,12 +13,53 @@ export class StatisticsService {
     ) { }
 
     async getAllStatistics() {
-        const stats = await this.prismaService.statistic.findMany();
+        const stats = await this.prismaService.statistic.findMany({
+            orderBy: {
+                createdAt: 'desc',
+            },
+        });
 
-        if (!stats.length)
-            throw new NotFoundException('No statistics found');
+        const count = await this.prismaService.statistic.count({
+            orderBy: {
+                createdAt: 'desc',
+            },
+        });
 
-        return stats;
+        const types = stats.map(stat => stat.type).filter((value, index, self) => self.indexOf(value) === index);
+
+        return { count, types, stats };
+    }
+
+    async getSpecificStatistics(data: GetStatisticDto) {
+
+        if (!Object.values(StatType).includes(data.type))
+            throw new ForbiddenException('Invalid statistic type');
+
+        data.userId = data.userId !== '' ? data.userId : undefined;
+
+        const stats = await this.prismaService.statistic.findMany({
+            where: {
+                type: data.type,
+                userId: data.userId,
+            },
+            orderBy: {
+                createdAt: 'desc',
+            },
+        });
+
+        const count = await this.prismaService.statistic.count({
+            where: {
+                type: data.type,
+                userId: data.userId,
+            },
+            orderBy: {
+                createdAt: 'desc',
+            },
+        });
+
+        const types = stats.map(stat => stat.type).filter((value, index, self) => self.indexOf(value) === index);
+
+        return { count, types, stats };
     }
 
     async addNewStatistic(data: AddNewStatisticDto, userId?: string) {

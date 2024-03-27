@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post, Query } from '@nestjs/common';
 import { Public } from 'src/auth/decorator';
 import { GetUser, Roles } from 'src/users/decorator';
 import { Role } from 'src/users/entities';
 import { AddNewStatisticDto } from './dto/addNewStat.dto';
+import { GetStatisticDto } from './dto/getStat.dto';
 import { StatisticsService } from './statistics.service';
 
 @Controller('statistics')
@@ -13,6 +14,14 @@ export class StatisticsController {
     @Get()
     async getAllStatistics() {
         return this.statisticsService.getAllStatistics();
+    }
+
+    @Roles(Role.ADMIN)
+    @Get('specific')
+    async getSpecificStatistics(
+        @Query() data: GetStatisticDto,
+    ) {
+        return this.statisticsService.getSpecificStatistics(data);
     }
 
     @Public()
