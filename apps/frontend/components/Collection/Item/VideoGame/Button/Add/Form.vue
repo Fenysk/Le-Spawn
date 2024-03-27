@@ -3,13 +3,13 @@ import { Card } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { Input } from '@/components/ui/input';
 import {
-Select
+    Select
 } from '@/components/ui/select';
 import { Loader2 } from 'lucide-vue-next';
 import Label from '~/components/ui/label/Label.vue';
-import CollectionsService from '~/services/collectionsService';
-import PlatformsService, { type Platform } from '~/services/platformsService';
-import UploadService from '~/services/uploadService';
+import CollectionsService from '~/services/collections.service';
+import PlatformsService, { type Platform } from '~/services/platforms.service';
+import UploadService from '~/services/upload.service';
 
 const step = ref<number>(1);
 

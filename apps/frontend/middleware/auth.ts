@@ -1,6 +1,6 @@
 import { defineNuxtRouteMiddleware, navigateTo } from 'nuxt/app';
-import AuthService from '~/services/authService';
-import UsersService from '~/services/usersService';
+import AuthService from '~/services/auth.service';
+import UsersService from '~/services/users.service';
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
     const usersService = new UsersService();

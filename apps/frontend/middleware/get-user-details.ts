@@ -1,5 +1,5 @@
 import { defineNuxtRouteMiddleware } from 'nuxt/app';
-import AuthService from '~/services/authService';
+import AuthService from '~/services/auth.service';
 
 export default defineNuxtRouteMiddleware(async (to) => {
     const authService = new AuthService();

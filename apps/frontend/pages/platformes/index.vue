@@ -3,7 +3,7 @@ definePageMeta({
     middleware: ['auth', 'admin'],
 });
 
-import PlatformsService, { type Platform } from '~/services/platformsService';
+import PlatformsService, { type Platform } from '~/services/platforms.service';
 
 const loading = ref(false);
 

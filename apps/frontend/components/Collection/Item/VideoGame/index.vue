@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { VideoGame } from '~/services/collectionsService';
+import type { VideoGame } from '~/services/collections.service';
 
 const loading = ref(false);
 

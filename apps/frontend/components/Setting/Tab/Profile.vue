@@ -7,8 +7,8 @@ import { useForm } from 'vee-validate';
 import { z } from 'zod';
 import Button from '~/components/ui/button/Button.vue';
 import Label from '~/components/ui/label/Label.vue';
-import UploadService from '~/services/uploadService';
-import UsersService from '~/services/usersService';
+import UploadService from '~/services/upload.service';
+import UsersService from '~/services/users.service';
 
 const formSchema = toTypedSchema(z.object({
     nickName: z.string().min(1).max(30),

@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import {
-FormControl,
-FormField,
-FormItem,
-FormLabel,
-FormMessage
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { toTypedSchema } from '@vee-validate/zod';
 import { Loader2 } from 'lucide-vue-next';
 import { useForm } from 'vee-validate';
 import * as zod from 'zod';
-import AuthService from '~/services/authService';
+import AuthService from '~/services/auth.service';
 
 const formSchema = toTypedSchema(zod.object({
     email: zod.string().email(),

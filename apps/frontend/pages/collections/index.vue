@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CollectionsService, { type Collection } from '~/services/collectionsService';
+import CollectionsService, { type Collection } from '~/services/collections.service';
 
 definePageMeta({
     middleware: ['auth'],

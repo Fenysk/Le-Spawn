@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Collection } from '~/services/collectionsService';
+import type { Collection } from '~/services/collections.service';
 
 defineProps<{
     collection: Collection

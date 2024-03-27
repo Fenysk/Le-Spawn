@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import { AddNewStatisticDto } from "../../backend/src/statistics/dto/addNewStat.dto";
-import { GetStatisticDto } from "../../backend/src/statistics/dto/getStat.dto";
-=======
 import type { StatType } from "~/enums/stat-type.enum";
->>>>>>> beta
 
 export default class StatisticsService {
 
@@ -92,8 +87,6 @@ export default class StatisticsService {
     }
 
 }
-<<<<<<< HEAD
-=======
 
 type GetStatisticDto = {
     type: StatType;
@@ -104,4 +97,3 @@ type AddNewStatisticDto = {
     type: StatType;
     value?: number;
 }
->>>>>>> beta

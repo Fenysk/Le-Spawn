@@ -1,6 +1,6 @@
 <script setup lang='ts'>
 import { Loader2 } from 'lucide-vue-next';
-import AuthService from '~/services/authService';
+import AuthService from '~/services/auth.service';
 
 definePageMeta({
     layout: 'simple',

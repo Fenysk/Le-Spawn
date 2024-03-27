@@ -1,4 +1,4 @@
-import UsersService from "~/services/usersService"
+import UsersService from "~/services/users.service"
 
 export const useAuthStore = defineStore('auth', () => {
     const user = ref<User | null>(null)

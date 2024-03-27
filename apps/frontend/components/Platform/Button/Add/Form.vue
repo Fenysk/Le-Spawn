@@ -2,19 +2,19 @@
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import {
-FormControl,
-FormField,
-FormItem,
-FormLabel,
-FormMessage
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
 } from '@/components/ui/form';
 import {
-Select,
-SelectContent,
-SelectGroup,
-SelectItem,
-SelectTrigger,
-SelectValue
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue
 } from '@/components/ui/select';
 import { toTypedSchema } from '@vee-validate/zod';
 import { format } from 'date-fns';
@@ -22,7 +22,7 @@ import { Calendar as CalendarIcon, Loader2 } from 'lucide-vue-next';
 import { useForm } from 'vee-validate';
 import * as zod from 'zod';
 import { cn } from '~/lib/utils';
-import PlatformsService from '~/services/platformsService';
+import PlatformsService from '~/services/platforms.service';
 
 const formSchema = toTypedSchema(zod.object({
     name: zod.string().min(1),

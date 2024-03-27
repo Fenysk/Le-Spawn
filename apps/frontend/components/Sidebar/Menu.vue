@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AuthService from '~/services/authService';
+import AuthService from '~/services/auth.service';
 
 const authStore = useAuthStore()
 const user = computed(() => authStore.getUser())
