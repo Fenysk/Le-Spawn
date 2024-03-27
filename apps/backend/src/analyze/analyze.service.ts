@@ -1,73 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { GameResponseDto } from './dto/game-response.dto';
 import { AnthropicService } from './services/anthropic.service';
-import { OpenAiService } from './services/openai.service';
 
 @Injectable()
 export class AnalyzeService {
 
-	constructor(
-		private readonly openAiService: OpenAiService,
-		private readonly anthropicService: AnthropicService
-	) { }
+    constructor(
+        private readonly anthropicService: AnthropicService
+    ) { }
 
-	async analyzeGamePhotosWithGPTVision(language: string, photos: string[]): Promise<GameResponseDto> {
-		const prompt = `
-		Analyze the photos. 
+    async analyzeGamePhotosWithAnthropic(language: string, photos: string[], model: string): Promise<any> {
 
-		Sends me the information in a JSON format like this type:
-		'''json
-		{
-			name: string;
-			platform: string;
-			edition: string; // 'Standard' by default.
-			region: string; // 'NTSC', 'PAL', ...
-			hasBox: boolean;
-			hasGame: boolean;
-			stateBox: string | null; // 'PARTS', 'BAD', 'AVERAGE', 'GOOD', 'MINT'.
-			stateGame: string | null;
-			extraContent: { // all detailed content included (controllers, stickers, ...) in ${language}.
-				name: string; // in ${language}.
-				state: string;
-			}[]; // Can be empty.
-			description: string; // little item description <160 characters, in ${language}.
-		}
-		'''
-		`;
-
-		return this.openAiService.askToGPTVision(prompt, photos);
-	}
-
-	async analyzeGamePhotosWithAnthropicSonnet(language: string, photos: string[]): Promise<any> {
-		const prompt = `
-		Analyze the photos.
-
-		Sends me the information in a JSON format like this type:
-		'''json
-		{
-			name: string;
-			platform: string;
-			edition: string; // 'Standard' by default.
-			region: string; // 'NTSC', 'PAL', ...
-			hasBox: boolean;
-			hasGame: boolean;
-			stateBox: string | null; // 'PARTS', 'BAD', 'AVERAGE', 'GOOD', 'MINT'.
-			stateGame: string | null;
-			extraContent: { // all detailed content included (controllers, stickers, ...) in ${language}.
-				name: string; // in ${language}.
-				state: string;
-			}[]; // Can be empty.
-			description: string; // little item description <160 characters, in ${language}.
-		}
-		'''
-		`;
-
-		return this.anthropicService.askToClaude(prompt, photos, 'claude-3-sonnet-20240229');
-	}
-
-	async analyzeGamePhotosWithAnthropicHaiku(language: string, photos: string[]): Promise<any> {
-
-		const prompt3 = `
+        const prompt3 = `
 Instructions: Analyze the photos. Mention all photo ids. An item can have multiple photos. Min photoId : 1. Max photoId : ${photos.length}. An id can be used multiple times.
 
 Send me the information in a JSON format like this type:
@@ -88,7 +31,7 @@ Send me the information in a JSON format like this type:
 }
 '''`;
 
-		const prompt2 = `
+        const prompt2 = `
 Analyze the photos. Mention all photo ids.
 
 Sends me the information in a JSON format like this type:
@@ -109,7 +52,7 @@ Sends me the information in a JSON format like this type:
 }
 '''`;
 
-		const prompt1 = `
+        const prompt1 = `
 Analyze the photos. Mention all photo ids.
 
 Sends me the information in a JSON format like this type:
@@ -130,9 +73,9 @@ Sends me the information in a JSON format like this type:
 }
 '''`;
 
-		const prompt = prompt3;
+        const prompt = prompt3;
 
-		return this.anthropicService.askToClaude(prompt, photos, 'claude-3-haiku-20240307');
-	}
+        return this.anthropicService.askToClaude(prompt, photos, model);
+    }
 
 }
