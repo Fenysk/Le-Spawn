@@ -3,8 +3,13 @@ definePageMeta({
     middleware: ['auth', 'admin'],
 });
 
+<<<<<<< HEAD
 import StatisticsService from '~/services/statisticsService';
 import { StatType } from '../../../backend/src/statistics/enums/stat-type.enum';
+=======
+import { StatType } from '~/enums/stat-type.enum';
+import StatisticsService from '~/services/statisticsService';
+>>>>>>> beta
 
 const loading = ref(false);
 
