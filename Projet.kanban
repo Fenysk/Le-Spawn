@@ -90,6 +90,15 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "8a27d1ed-01ce-4f2c-8dbe-d643054733a2",
+          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
+          "title": "Data on graphics stats",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
@@ -132,6 +141,15 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "2ca76ab3-c7f4-4535-8baa-7d82325de14b",
+          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
+          "title": "User can delete his profile",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
@@ -156,10 +174,16 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
+      "title": "✅ IN PROGRESS",
+      "cards": [
         {
           "id": "d158f2de-a4b3-4f36-ab26-db17940942f6",
-          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
+          "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
           "title": "Integrate AI to front",
           "description": "",
           "labels": [],
@@ -167,11 +191,6 @@
           "comments": []
         }
       ]
-    },
-    {
-      "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
-      "title": "✅ IN PROGRESS",
-      "cards": []
     },
     {
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

@@ -7,7 +7,7 @@ export default class AnalyzeService {
         this.API_URL = config.public.API_URL;
     }
 
-    async analyzeGamePhotosWithAnthropicHaiku(language: string = 'french', photos: string[]) {
+    async analyzeGamePhotosWithAnthropicHaiku(photos: string[]) {
         const authStore = useAuthStore();
         const accessToken = authStore.getAccessToken();
 
@@ -18,7 +18,7 @@ export default class AnalyzeService {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${accessToken}`,
                 },
-                body: JSON.stringify({ language, photos }),
+                body: JSON.stringify({ language: 'french', photos }),
             });
 
             if (!response.ok) throw await response.json();

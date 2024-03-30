@@ -1,12 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { UUIDService } from 'src/common/uuid/uuid.service';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { StatType } from 'src/statistics/enums/stat-type.enum';
+import { StatisticsService } from 'src/statistics/statistics.service';
 
 @Injectable()
 export class CollectionsService {
     constructor(
         private readonly prismaService: PrismaService,
-        private readonly uuidService: UUIDService
+        private readonly uuidService: UUIDService,
+        private readonly statisticsService: StatisticsService
     ) { }
 
     async getMyCollections(userId: string) {
@@ -15,8 +18,6 @@ export class CollectionsService {
             include: {
                 VideoGames: {
                     include: {
-                        Box: true,
-                        Game: true,
                         extraContents: true,
                         Platform: true
                     }
@@ -39,8 +40,6 @@ export class CollectionsService {
             include: {
                 VideoGames: {
                     include: {
-                        Box: true,
-                        Game: true,
                         extraContents: true,
                         Platform: true
                     }
@@ -50,6 +49,8 @@ export class CollectionsService {
 
         if (!collection)
             throw new NotFoundException('Collection not found');
+
+        await this.statisticsService.addNewStatistic({ type: StatType.USER_COLLECTION_VISIT }, userId);
 
         return collection;
     }

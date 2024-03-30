@@ -10,14 +10,35 @@ export class AnalyzeService {
 
     async analyzeGamePhotosWithAnthropic(language: string, photos: string[], model: string): Promise<any> {
 
+        const prompt4 = `
+Photos : min id = 1 ; max id = ${photos.length}. Mention all photo ids.
+
+Send me the information in a JSON format like this type:
+'''json
+{
+	photoOfBoxIds: number[] (Order: front, back, side, inside…. Empty if not box)
+	photoOfGameDiskOrCartridgeIds: number[] (Order: front, back. Empty if not disk or cartridge)
+	title: string
+	edition: string ("Platinum", "Limited", …. "Standard" by default)
+	region: string ("PAL", "NTFS", "JAP" …)
+	platformName: string
+	otherContents: {
+        name: string ("Notice", "Code VIP", "Figurine", "Poster" …. Never box or game. In ${language})
+        type: string (documentation, figurine …)
+        photoIds: string
+	}[] (empty if no physical contents)
+	mainPhotoId: number
+}
+'''`;
+
         const prompt3 = `
 Instructions: Analyze the photos. Mention all photo ids. An item can have multiple photos. Min photoId : 1. Max photoId : ${photos.length}. An id can be used multiple times.
 
 Send me the information in a JSON format like this type:
 '''json
 {
-	photoBoxIds : number[] | null (photos of the box if exists)
-	photoGameIds : number[] | null (photos of the game (only disk or cartridge) if exists)
+	photoBoxIds : number[] (photos of the box if exists)
+	photoGameIds : number[] (photos of the game (only disk or cartridge) if exists)
 	title : string
 	edition : string ("Standard" by default)
 	region : string ("PAL", "NTFS", …)
@@ -27,7 +48,7 @@ Send me the information in a JSON format like this type:
 	type : string (documentation, figurine…)
 	photoIds : number[] (photos of the content)
 	}[]
-	mainPhoto : number (the main photo id)
+	mainPhotoId : number
 }
 '''`;
 
@@ -73,7 +94,7 @@ Sends me the information in a JSON format like this type:
 }
 '''`;
 
-        const prompt = prompt3;
+        const prompt = prompt4;
 
         return this.anthropicService.askToClaude(prompt, photos, model);
     }

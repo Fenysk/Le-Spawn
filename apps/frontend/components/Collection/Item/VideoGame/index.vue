@@ -11,7 +11,8 @@ const alertGame = () => {
     alert(props.videoGame.id);
 }
 
-const bannerImage = computed(() => props.videoGame.Box?.photoFrontBox || props.videoGame.Game?.photoFrontGame || 'https://via.placeholder.com/400x600');
+const bannerImage = computed(() => props.videoGame.mainPhoto || 'https://via.placeholder.com/500x500');
+
 const displayStateBoxLabel = (state: string) => {
     switch (state) {
         case 'NEW':
@@ -63,7 +64,7 @@ const displayStateEmoji = (state: string) => {
 </script>
 
 <template>
-    <article class="flex h-24 w-full overflow-hidden rounded-md border bg-white shadow" @click="alertGame">
+    <article class="flex h-24 w-full cursor-pointer overflow-hidden rounded-md border bg-white shadow" @click="alertGame">
 
         <img id="Picture" :src="bannerImage" :alt="'Photo de ' + videoGame.title"
             class="aspect-square h-auto object-cover" />
@@ -92,14 +93,14 @@ const displayStateEmoji = (state: string) => {
                     <tr>
                         <td class="border-r">
                             <span>
-                                {{ displayStateBoxLabel(videoGame.Box?.stateBox) }}
-                                {{ displayStateEmoji(videoGame.Box?.stateBox) }}
+                                {{ displayStateBoxLabel(videoGame.stateBox) }}
+                                {{ displayStateEmoji(videoGame.stateBox) }}
                             </span>
                         </td>
                         <td class="border-r">
                             <span>
-                                {{ displayStateGameLabel(videoGame.Game?.stateGame) }}
-                                {{ displayStateEmoji(videoGame.Game?.stateGame) }}
+                                {{ displayStateGameLabel(videoGame.stateGame) }}
+                                {{ displayStateEmoji(videoGame.stateGame) }}
                             </span>
                         </td>
                         <td>

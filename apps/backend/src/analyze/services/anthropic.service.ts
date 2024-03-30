@@ -81,7 +81,7 @@ export class AnthropicService {
         const anthropicResponse = await this.anthropic.messages.create({
             model,
             max_tokens: 1000,
-            temperature: 0.5,
+            temperature: 0.6,
             system: `You're a robot that analyzes images and returns data in JSON format.`,
             messages
         })

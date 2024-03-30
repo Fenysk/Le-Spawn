@@ -64,6 +64,7 @@ export class UploadService {
         const clearFileName = fileName.replace(/[^a-zA-Z0-9.]/g, '').replace(/\.[^/.]+$/, ".webp");
 
         const convertedFileContent = await sharp(fileContent)
+            .rotate()
             .webp({ quality: 100 })
             .resize(1080, 1080, { fit: 'outside', withoutEnlargement: true })
             .toBuffer();

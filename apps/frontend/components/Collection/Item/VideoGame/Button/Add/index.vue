@@ -43,7 +43,7 @@ const handleAddingNewGameSuccess = () => {
         <span class="font-acephimere">Ajouter un jeu</span>
     </TitleTemplate>
 
-    <NewGameTemplate>
+    <NewGameTemplate class="flex">
         <CollectionItemVideoGameButtonAddForm :collectionId @addingNewGameSuccess="handleAddingNewGameSuccess" />
     </NewGameTemplate>
 

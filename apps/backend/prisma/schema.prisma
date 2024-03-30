@@ -327,8 +327,11 @@ model VideoGame {
     maxMultiplayerLocalPlayers  Int? @map("max_multiplayer_local_players")
     maxMultiplayerOnlinePlayers Int? @map("max_multiplayer_online_players")
 
-    Box           VideoGameBox?
-    Game          VideoGameGame?
+    mainPhoto     String                  @map("main_photo")
+    stateBox      State?                  @map("state_box")
+    photosBox     String[]                @map("photos_box")
+    stateGame     State?                  @map("state_game")
+    photosGame    String[]                @map("photos_game")
     extraContents VideoGameExtraContent[]
 
     initialPurchasePrice    Decimal? @map("initial_purchase_price")
@@ -348,36 +351,13 @@ model VideoGame {
     @@map("video_games")
 }
 
-model VideoGameBox {
-    stateBox       State   @map("state_box")
-    photoFrontBox  String? @map("photo_front_side_box")
-    photoBackBox   String? @map("photo_back_side_box")
-    photoSideBox   String? @map("photo_spine_box")
-    photoInsideBox String? @map("photo_inside_box")
-
-    videoGameId String    @id @unique @map("video_game_id")
-    VideoGame   VideoGame @relation(fields: [videoGameId], references: [id], onDelete: Cascade)
-
-    @@map("video_game_boxes")
-}
-
-model VideoGameGame {
-    stateGame      State   @map("state_game")
-    photoFrontGame String? @map("photo_front_game")
-    photoBackGame  String? @map("photo_back_game")
-
-    videoGameId String    @id @unique @map("video_game_id")
-    VideoGame   VideoGame @relation(fields: [videoGameId], references: [id], onDelete: Cascade)
-
-    @@map("video_game_games")
-}
-
 model VideoGameExtraContent {
     id String @id @unique
 
-    name  String
-    type  String
-    state State
+    name   String
+    type   String
+    state  State
+    photos String[]
 
     videoGameId String    @map("video_game_id")
     VideoGame   VideoGame @relation(fields: [videoGameId], references: [id], onDelete: Cascade)

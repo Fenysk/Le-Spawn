@@ -114,8 +114,11 @@ export type VideoGame = {
     collectionId: string;
     createdAt: string;
     updatedAt: string;
-    Box: Box;
-    Game: Game;
+    mainPhoto: string;
+    stateBox: State;
+    photosBox: string[];
+    stateGame: State;
+    photosGame: string[];
     extraContents: ExtraContents[];
     Platform: Platform;
 };
@@ -132,31 +135,23 @@ export type Platform = {
     pictureUrl: string;
 };
 
-export type Box = {
-    stateBox: string;
-    photoFrontBox: string;
-    photoBackBox: string;
-    photoSideBox: string;
-    photoInsideBox: string;
-    videoGameId: string;
-}
-
-export type Game = {
-    stateGame: string;
-    photoFrontGame: string;
-    photoBackGame: string;
-    videoGameId: string;
-}
-
 export type ExtraContents = {
     id: string;
     name: string;
     type: string;
-    state: string;
+    state: State;
     videoGameId: string;
 };
 
 export enum Currency {
     EUR = 'EUR',
     USD = 'USD'
+}
+
+export enum State {
+    NEW = 'NEW',
+    MINT = 'MINT',
+    GOOD = 'GOOD',
+    BAD = 'BAD',
+    PARTS = 'PARTS'
 }

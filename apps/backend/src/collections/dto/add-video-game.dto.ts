@@ -1,5 +1,5 @@
 import { Currency, State } from "@prisma/client";
-import { IsDateString, IsNotEmpty, IsNumber, IsOptional } from "class-validator";
+import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsUrl } from "class-validator";
 
 export class AddVideoGameDto {
 
@@ -43,29 +43,21 @@ export class AddVideoGameDto {
     @IsNumber()
     maxMultiplayerOnlinePlayers: number;
 
+    @IsNotEmpty()
+    @IsUrl()
+    mainPhoto: string;
+
     @IsOptional()
     stateBox: State;
 
     @IsOptional()
-    photoFrontBox: string;
-
-    @IsOptional()
-    photoBackBox: string;
-
-    @IsOptional()
-    photoSideBox: string;
-
-    @IsOptional()
-    photoInsideBox: string;
-
+    photosBox: string[];
+    
     @IsOptional()
     stateGame: State;
 
     @IsOptional()
-    photoFrontGame: string;
-
-    @IsOptional()
-    photoBackGame: string;
+    photosGame: string[];
 
     @IsOptional()
     extraContents: ExtraContent[];
@@ -96,4 +88,7 @@ class ExtraContent {
 
     @IsNotEmpty()
     state: string;
+
+    @IsOptional()
+    photos: string[];
 }
