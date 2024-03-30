@@ -165,6 +165,9 @@ importers:
 
   apps/frontend:
     dependencies:
+      '@internationalized/date':
+        specifier: 3.0.0-nightly.2967
+        version: 3.0.0-nightly.2967
       '@pinia/nuxt':
         specifier: ^0.5.1
         version: 0.5.1(typescript@5.4.2)(vue@3.4.21)
@@ -2153,6 +2156,12 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@internationalized/date@3.0.0-nightly.2967:
+    resolution: {integrity: sha512-f+8Udypsc95TJsrfkK/ZDXM2aaMFMmh7iUz1JOPwqd0LSNDcmMttedw+PZpQUCYBntEPRg4S9S5JvgHGMyyU+A==}
+    dependencies:
+      '@babel/runtime': 7.24.0
+    dev: false
 
   /@internationalized/date@3.5.2:
     resolution: {integrity: sha512-vo1yOMUt2hzp63IutEaTUxROdvQg1qlMRsbCvbay2AK2Gai7wIgCyK5weEX3nHkiLgo4qCXHijFNC/ILhlRpOQ==}
