@@ -16,17 +16,10 @@ Photos : min id = 1 ; max id = ${photos.length}. Mention all photo ids.
 Send me the information in a JSON format like this type:
 '''json
 {
-	photoOfBoxIds: number[] (Order: front, back, side, inside…. Empty if not box)
-	photoOfGameDiskOrCartridgeIds: number[] (Order: front, back. Empty if not disk or cartridge)
 	title: string
 	edition: string ("Platinum", "Limited", …. "Standard" by default)
 	region: string ("PAL", "NTFS", "JAP" …)
 	platformName: string
-	otherContents: {
-        name: string ("Notice", "Code VIP", "Figurine", "Poster" …. Never box or game. In ${language})
-        type: string (documentation, figurine …)
-        photoIds: string
-	}[] (empty if no physical contents)
 	mainPhotoId: number
 }
 '''`;

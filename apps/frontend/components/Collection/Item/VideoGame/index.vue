@@ -64,7 +64,8 @@ const displayStateEmoji = (state: string) => {
 </script>
 
 <template>
-    <article class="flex h-24 w-full cursor-pointer overflow-hidden rounded-md border bg-white shadow" @click="alertGame">
+    <article class="flex h-24 w-full cursor-pointer overflow-hidden rounded-md border bg-white shadow"
+        @click="alertGame">
 
         <img id="Picture" :src="bannerImage" :alt="'Photo de ' + videoGame.title"
             class="aspect-square h-auto object-cover" />
@@ -81,7 +82,7 @@ const displayStateEmoji = (state: string) => {
                         </td>
                         <td class="border-r">
                             <span class="mr-1">Jeu</span>
-                            <Icon name="mingcute:radiobox-fill" />
+                            <Icon name="mingcute:album-line" />
                         </td>
                         <td>
                             <span class="mr-1">Extras</span>

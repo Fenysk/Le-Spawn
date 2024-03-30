@@ -20,9 +20,12 @@ export class JsonService {
         if (!message.startsWith('{'))
             throw new Error('The response is not a JSON object');
 
-        const gameResponse: GameResponseDto = JSON.parse(message);
-
-        return gameResponse;
+        try {
+            const gameResponse: GameResponseDto = JSON.parse(message);
+            return gameResponse;
+        } catch (error) {
+            throw new Error('Failed to parse JSON');
+        }
     }
     
 }
