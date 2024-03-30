@@ -99,6 +99,15 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "90b4d474-30eb-44f7-b69e-98dc19b8dc37",
+          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
+          "title": "Fix AI prompt",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
@@ -150,6 +159,15 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "6e2a812f-4270-4d37-bd7f-4abe4418d0be",
+          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
+          "title": "Add localstorage data for adding games",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
@@ -170,6 +188,15 @@
           "id": "8fe5c618-ebc7-40eb-a25e-734d2c66ea20",
           "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
           "title": "Change Mails template",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "59761f6c-892b-457c-8eab-5681a6fe4603",
+          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
+          "title": "Turn into PWA",
           "description": "",
           "labels": [],
           "checkboxes": [],

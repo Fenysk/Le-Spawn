@@ -11,7 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@internationalized/date": "3.0.0-nightly.2967",
+    "@internationalized/date": "3.5.2",
     "@pinia/nuxt": "^0.5.1",
     "@popperjs/core": "^2.11.8",
     "@vee-validate/zod": "^4.12.6",
