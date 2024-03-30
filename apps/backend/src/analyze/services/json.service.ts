@@ -5,6 +5,7 @@ import { GameResponseDto } from "../dto/game-response.dto";
 export class JsonService {
 
     convertResponseToJSON(response: string): GameResponseDto {
+        
         let message = response;
 
         if (message.includes('//'))

@@ -194,7 +194,8 @@ const nextStep = async () => {
             break;
 
         case 'states':
-            await handleAnalyzePhotos();
+            if (!hasAlreadyAnalyzedPhotos.value)
+                await handleAnalyzePhotos();
             setOtherDataToForm();
             step.value = 'details';
             break;
@@ -244,6 +245,8 @@ const setOtherDataToForm = () => {
         edition: analyzedGame.value?.edition,
         region: analyzedGame.value?.region,
         platformId: getPlatformId(analyzedGame.value?.platformName),
+        photosBox: photoBoxIds.value.map(id => photosUrl.value[id]),
+        photosGame: photoGameIds.value.map(id => photosUrl.value[id]),
     });
 }
 
@@ -274,13 +277,13 @@ const handleAddingNewGameSuccess = () => {
 <template>
     <div class="w-full">
 
-        <!-- <div class="my-4 mb-6 max-h-48 max-w-80 overflow-auto">
+        <div class="my-4 mb-6 max-h-48 max-w-80 overflow-auto" v-show="false">
             <pre>photoBoxIds: {{ photoBoxIds }}</pre>
             <pre>photoGameIds: {{ photoGameIds }}</pre>
             <pre>extraContents: {{ extraContents }}</pre>
             <pre>analyzedGame: {{ analyzedGame }}</pre>
             <pre>form.values: {{ form.values }}</pre>
-        </div> -->
+        </div>
 
         <form id="Photos" class="space-y-6" v-if="step === 'photos'" @submit.prevent="nextStep">
 
@@ -388,7 +391,7 @@ const handleAddingNewGameSuccess = () => {
                     <span>Photo précédente</span>
                 </Button>
 
-                <Button :disabled="loading" type="submit" class="float-right" v-if="!otherPhotosUrl.length">
+                <Button :disabled="loading" type="submit" class="float-right" v-if="!otherPhotosUrl.length && !isCreatingExtraContent">
                     <Loader2 v-if="loading" class="mr-2 h-4 w-4 animate-spin" />
                     {{ loading ? 'Un peu de patience...' : 'Étape suivante' }}
                 </Button>
@@ -420,7 +423,7 @@ const handleAddingNewGameSuccess = () => {
             </div>
 
             <div>
-                <Button @click.prevent="step = 'sorting'" class="float-left">
+                <Button @click.prevent="step = 'sorting'" class="float-left" :disabled="loading">
                     <Icon name="heroicons-solid:arrow-left" class="mr-2" />
                     <span>Étape précédente</span>
                 </Button>
@@ -433,7 +436,7 @@ const handleAddingNewGameSuccess = () => {
 
         </form>
 
-        <form id="Details" class="space-y-6" v-if="step === 'details'" @submit.prevent="handleRegisterGame">
+        <form id="Details" class="space-y-6" v-if="step === 'details'" @submit.prevent="nextStep">
 
             <FormField v-slot="{ componentField }" name="platformId">
                 <FormItem>

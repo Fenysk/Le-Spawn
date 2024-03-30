@@ -10,6 +10,20 @@ export class AnalyzeService {
 
     async analyzeGamePhotosWithAnthropic(language: string, photos: string[], model: string): Promise<any> {
 
+        const prompt5 = `
+These photos represent one or more parts of a video game.
+Send me the information about this game in a JSON object like this:
+'''json
+{
+	title: string
+	edition: string ("Platinum", "Limited", …. "Standard" by default)
+	region: string ("PAL", "NTFS", "JAP" …)
+	platformName: string
+    description: string
+	mainPhotoId: number
+}
+'''`;
+
         const prompt4 = `
 Photos : min id = 1 ; max id = ${photos.length}. Mention all photo ids.
 
@@ -87,7 +101,7 @@ Sends me the information in a JSON format like this type:
 }
 '''`;
 
-        const prompt = prompt4;
+        const prompt = prompt5;
 
         return this.anthropicService.askToClaude(prompt, photos, model);
     }
