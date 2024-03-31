@@ -229,7 +229,7 @@ model Statistic {
     id String @id @unique
 
     type  String
-    value Int?   @default(1)
+    value Float?   @default(1)
 
     createdAt DateTime @default(now()) @map("created_at")
 

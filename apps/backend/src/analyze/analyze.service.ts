@@ -5,21 +5,21 @@ import { AnthropicService } from './services/anthropic.service';
 export class AnalyzeService {
 
     constructor(
-        private readonly anthropicService: AnthropicService
+        private readonly anthropicService: AnthropicService,
     ) { }
 
-    async analyzeGamePhotosWithAnthropic(language: string, photos: string[], model: string): Promise<any> {
+    async analyzeGamePhotosWithAnthropic(language: string, photos: string[], model: string) {
 
         const prompt5 = `
-These photos represent one or more parts of a video game.
-Send me the information about this game in a JSON object like this:
+These photos represent one or many parts of a video game.
+Send me the information about this game in a single JSON object like this:
 '''json
 {
 	title: string
 	edition: string ("Platinum", "Limited", …. "Standard" by default)
 	region: string ("PAL", "NTFS", "JAP" …)
 	platformName: string
-    description: string
+    description: string (in ${language})
 	mainPhotoId: number
 }
 '''`;
@@ -103,7 +103,7 @@ Sends me the information in a JSON format like this type:
 
         const prompt = prompt5;
 
-        return this.anthropicService.askToClaude(prompt, photos, model);
+        return await this.anthropicService.askToClaude(prompt, photos, model);
     }
 
 }

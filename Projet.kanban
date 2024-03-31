@@ -99,15 +99,6 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
-        },
-        {
-          "id": "90b4d474-30eb-44f7-b69e-98dc19b8dc37",
-          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
-          "title": "Fix AI prompt",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
         }
       ]
     },
@@ -137,15 +128,6 @@
           "id": "7d728b33-51eb-489a-9b8a-1a50d5d94451",
           "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
           "title": "Add refresh button to stats",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        },
-        {
-          "id": "5536df5c-e13c-4b9e-9fc5-891420167e81",
-          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
-          "title": "Add AI money counter",
           "description": "",
           "labels": [],
           "checkboxes": [],
@@ -198,22 +180,39 @@
     {
       "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
       "title": "✅ IN PROGRESS",
-      "cards": [
-        {
-          "id": "59761f6c-892b-457c-8eab-5681a6fe4603",
-          "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
-          "title": "Turn into PWA",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        }
-      ]
+      "cards": []
     },
     {
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "90b4d474-30eb-44f7-b69e-98dc19b8dc37",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Fix AI prompt",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "5536df5c-e13c-4b9e-9fc5-891420167e81",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add AI money counter",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "59761f6c-892b-457c-8eab-5681a6fe4603",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Turn into PWA",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "d158f2de-a4b3-4f36-ab26-db17940942f6",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

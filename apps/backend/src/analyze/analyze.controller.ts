@@ -18,9 +18,9 @@ export class AnalyzeController {
         @Body('language') language: string,
         @Body('photos') photos: string[]
     ) {
-        const response = this.analyzeService.analyzeGamePhotosWithAnthropic(language, photos, 'claude-3-sonnet-20240229');
+        const response = await this.analyzeService.analyzeGamePhotosWithAnthropic(language, photos, 'claude-3-sonnet-20240229');
 
-        await this.statisticsService.addNewStatistic({ type: StatType.PHOTO_ANALYSIS }, userId);
+        await this.statisticsService.addNewStatistic({ type: StatType.AI_USAGE, value: response.usage.total_cost_in_cents }, userId);
 
         return response;
     }
@@ -31,11 +31,11 @@ export class AnalyzeController {
         @Body('language') language: string,
         @Body('photos') photos: string[]
     ) {
-        const response = this.analyzeService.analyzeGamePhotosWithAnthropic(language, photos, 'claude-3-haiku-20240307');
+        const response = await this.analyzeService.analyzeGamePhotosWithAnthropic(language, photos, 'claude-3-haiku-20240307');
 
-        await this.statisticsService.addNewStatistic({ type: StatType.PHOTO_ANALYSIS }, userId);
+        await this.statisticsService.addNewStatistic({ type: StatType.AI_USAGE, value: response.usage.total_cost_in_cents }, userId);
 
-        return response;
+        return response.gameResponse;
     }
 
 }

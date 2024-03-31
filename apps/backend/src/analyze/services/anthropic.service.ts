@@ -11,7 +11,7 @@ export class AnthropicService {
 
     constructor(
         private readonly configService: ConfigService,
-        private readonly jsonService: JsonService
+        private readonly jsonService: JsonService,
     ) {
         this.anthropic.apiKey = this.configService.get('ANTHROPIC_API_KEY');
     }
@@ -37,10 +37,33 @@ export class AnthropicService {
 
     }
 
+    private getTokensUsage(model: string, inputTokens: number, outputTokens: number) {
+
+        let input_pricing_in_cents = 0;
+        let output_pricing_in_cents = 0;
+
+        if (model.includes("haiku")) {
+            input_pricing_in_cents = this.configService.get('HAIKU_PRICING_PER_MILLION_INPUT');
+            output_pricing_in_cents = this.configService.get('HAIKU_PRICING_PER_MILLION_OUTPUT');
+        }
+        
+        const input_cost_in_cents = input_pricing_in_cents * inputTokens / 1e6;
+        const output_cost_in_cents = output_pricing_in_cents * outputTokens / 1e6;
+
+        const total_cost_in_cents = input_cost_in_cents + output_cost_in_cents;
+
+        return { total_cost_in_cents, input_cost_in_cents, output_cost_in_cents };
+    }
+
+
     async askToClaude(prompt: string, images: string[], model: string) {
+        const imagesBase64: string[] = [];
+
         const imagesContent = images && images.length > 0 ? await Promise.all(images.flatMap(async (image, index) => {
             try {
                 const { media_type, data } = await this.convertImageUrlToBase64(image);
+
+                imagesBase64.push(`data:${media_type};base64,${data}`);
 
                 return [
                     {
@@ -80,15 +103,21 @@ export class AnthropicService {
 
         const anthropicResponse = await this.anthropic.messages.create({
             model,
-            max_tokens: 1000,
+            max_tokens: 2000,
             temperature: 0.6,
             system: `You're a robot that analyzes images and returns data in JSON format.`,
             messages
         })
 
-        const gameResponse: GameResponseDto = this.jsonService.convertResponseToJSON(anthropicResponse.content[0].text);
+        const anthropicResponseContent = anthropicResponse.content[0].text;
+        const anthropicResponseModel = anthropicResponse.model;
+        const anthropicResponseInputTokens = anthropicResponse.usage.input_tokens;
+        const anthropicResponseOutputTokens = anthropicResponse.usage.output_tokens;
 
-        return gameResponse;
+        const usage = this.getTokensUsage(anthropicResponseModel, anthropicResponseInputTokens, anthropicResponseOutputTokens);
+        const gameResponse: GameResponseDto = this.jsonService.convertResponseToJSON(anthropicResponseContent);
+
+        return { gameResponse, usage };
     }
 
 }
