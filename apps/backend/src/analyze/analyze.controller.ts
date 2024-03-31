@@ -20,7 +20,9 @@ export class AnalyzeController {
     ) {
         const response = await this.analyzeService.analyzeGamePhotosWithAnthropic(language, photos, 'claude-3-sonnet-20240229');
 
-        await this.statisticsService.addNewStatistic({ type: StatType.AI_USAGE, value: response.usage.total_cost_in_cents }, userId);
+        const cost = response.usage.total_cost_in_cents;
+
+        await this.statisticsService.addNewStatistic({ type: StatType.AI_USAGE, value: cost }, userId);
 
         return response;
     }
@@ -33,7 +35,9 @@ export class AnalyzeController {
     ) {
         const response = await this.analyzeService.analyzeGamePhotosWithAnthropic(language, photos, 'claude-3-haiku-20240307');
 
-        await this.statisticsService.addNewStatistic({ type: StatType.AI_USAGE, value: response.usage.total_cost_in_cents }, userId);
+        const cost = response.usage.total_cost_in_cents;
+
+        await this.statisticsService.addNewStatistic({ type: StatType.AI_USAGE, value: cost }, userId);
 
         return response.gameResponse;
     }
