@@ -33,10 +33,10 @@ type Statistics = {
 
 const categories = ref<string[]>([])
 
-const currentCategory = ref('LOGIN');
+const currentCategory = ref('');
 const currentTimeLaps = ref('hour');
 
-const now = new Date(); // Current time, for demonstration purposes
+const now = new Date();
 const timeLaps = computed(() => {
     switch (currentTimeLaps.value) {
         case 'hour':
@@ -80,7 +80,7 @@ const options = computed(() => {
             }
         },
         title: {
-            text: 'Statistiques',
+            text: currentCategory.value,
         },
         legend: {
             enabled: false,
