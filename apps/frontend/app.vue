@@ -1,13 +1,6 @@
 <script setup>
 useSeoMeta({
-    title: 'Le Spawn',
     description: 'Toute ta collection dans un seul endroit !'
-})
-
-useHead({
-    htmlAttrs: {
-        lang: 'fr',
-    }
 })
 
 const NODE_ENV = useRuntimeConfig().public.NODE_ENV;

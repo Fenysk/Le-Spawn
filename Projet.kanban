@@ -192,10 +192,16 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
-        },
+        }
+      ]
+    },
+    {
+      "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
+      "title": "✅ IN PROGRESS",
+      "cards": [
         {
           "id": "59761f6c-892b-457c-8eab-5681a6fe4603",
-          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
+          "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
           "title": "Turn into PWA",
           "description": "",
           "labels": [],
@@ -203,11 +209,6 @@
           "comments": []
         }
       ]
-    },
-    {
-      "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
-      "title": "✅ IN PROGRESS",
-      "cards": []
     },
     {
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
