@@ -1,8 +1,9 @@
 import { Module, forwardRef } from '@nestjs/common';
-import { UploadService } from './upload.service';
-import { UploadController } from './upload.controller';
-import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ConfigService } from '@nestjs/config';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { StatisticsModule } from 'src/statistics/statistics.module';
+import { UploadController } from './upload.controller';
+import { UploadService } from './upload.service';
 
 @Module({
     imports: [
@@ -14,6 +15,7 @@ import { ConfigService } from '@nestjs/config';
                 limit: configService.getOrThrow('THROTTLE_LIMIT'),
             }]),
         }),
+        StatisticsModule
     ],
     providers: [
         UploadService,

@@ -90,6 +90,15 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "137cbd8a-c21f-4d5f-b016-aeb301f1b9ad",
+          "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
+          "title": "splash screen",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
@@ -168,6 +177,15 @@
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "f953643f-9c7d-484e-a5e1-9a2eac565a2a",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Upload multiple files in one time",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "8a27d1ed-01ce-4f2c-8dbe-d643054733a2",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

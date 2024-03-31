@@ -59,7 +59,7 @@ export class UploadService {
         return { url };
     }
 
-    async uploadImageFile(fileName: string, fileContent: Buffer) {
+    async uploadImageFile(fileName: string, fileContent: Buffer): Promise<string> {
 
         const clearFileName = fileName.replace(/[^a-zA-Z0-9.]/g, '').replace(/\.[^/.]+$/, ".webp");
 
@@ -84,7 +84,19 @@ export class UploadService {
         const awsRegion = this.configService.getOrThrow('AWS_S3_REGION');
         const url = `https://${awsBucketName}.s3.${awsRegion}.amazonaws.com/${clearFileName}`;
 
-        return { url };
+        return url;
+    }
+
+    async uploadMultipleImageFiles(files: { originalname: string, buffer: Buffer }[]): Promise<string[]> {
+
+        let urls = [];
+
+        for (const file of files) {
+            const url = await this.uploadImageFile(file.originalname, file.buffer);
+            urls.push(url);
+        }
+
+        return urls;
     }
 
     async deleteFile(fileName: string) {

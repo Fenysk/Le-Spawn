@@ -1,63 +1,49 @@
-import { Body, Controller, Delete, FileTypeValidator, Get, MaxFileSizeValidator, ParseFilePipe, Post, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
-import { FileInterceptor } from '@nestjs/platform-express';
+import { BadRequestException, Body, Controller, FileTypeValidator, ParseFilePipe, Post, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { Multer } from 'multer';
+import { StatType } from 'src/statistics/enums/stat-type.enum';
+import { StatisticsService } from 'src/statistics/statistics.service';
+import { GetUser } from 'src/users/decorator';
 import { UploadService } from './upload.service';
 
 @Controller('upload')
 export class UploadController {
-    constructor(private readonly uploadService: UploadService) { }
-
-    @Get()
-    async getFile(@Body('fileName') fileName: string, @Res() res: any) {
-        return await this.uploadService.getFile(fileName, res);
-    }
-
-    @Post('url')
-    async getFileUrl(@Body('fileName') fileName: string) {
-        const contentWithUrl = await this.uploadService.getFileUrl(fileName);
-        return contentWithUrl;
-    }
-
-    @Post()
-    @UseInterceptors(FileInterceptor('file'))
-    async uploadAnyFile(@UploadedFile(
-        new ParseFilePipe({
-            validators: [
-                new MaxFileSizeValidator({ maxSize: 10000000 })
-            ]
-        })
-    ) file: Multer.File) {
-        return await this.uploadService.uploadFile(file.originalname, file.buffer);
-    }
-
-    @Delete()
-    async deleteFile(@Body('fileName') fileName: string) {
-        return await this.uploadService.deleteFile(fileName);
-    }
+    constructor(
+        private readonly uploadService: UploadService,
+        private readonly statisticsService: StatisticsService
+    ) { }
 
     @Post('image')
     @UseInterceptors(FileInterceptor('file'))
-    async uploadImageFile(@UploadedFile(
-        new ParseFilePipe({
-            validators: [
-                new FileTypeValidator({ fileType: 'image' })
-            ]
-        })
-    ) file: Multer.File) {
-        return await this.uploadService.uploadImageFile(file.originalname, file.buffer);
+    async uploadImageFile(
+        @UploadedFile(new ParseFilePipe({ validators: [new FileTypeValidator({ fileType: 'image' })] })) file: Multer.File,
+        @GetUser('sub') userId: string
+    ) {
+        if (!file)
+            throw new BadRequestException('No file provided');
+
+        const url = await this.uploadService.uploadImageFile(file.originalname, file.buffer);
+
+        await this.statisticsService.addNewStatistic({ type: StatType.UPLOAD_IMAGES, value: 1 }, userId);
+
+        return { url };
     }
 
-    @Post('pdf')
-    @UseInterceptors(FileInterceptor('file'))
-    async uploadPdfFile(@UploadedFile(
-        new ParseFilePipe({
-            validators: [
-                new MaxFileSizeValidator({ maxSize: 1000000 }),
-                new FileTypeValidator({ fileType: 'pdf' })
-            ]
-        })
-    ) file: Multer.File) {
-        return await this.uploadService.uploadFile(file.originalname, file.buffer);
+    @Post('images')
+    @UseInterceptors(FilesInterceptor('files', 10)) // max 10
+    async uploadMultipleImageFiles(
+        @UploadedFiles(new ParseFilePipe({ validators: [new FileTypeValidator({ fileType: 'image' })] })) files: Array<Multer.File>,
+        @GetUser('sub') userId: string
+    ) {
+
+        if (!files.length)
+            throw new BadRequestException('No files provided');
+
+        const urls = await this.uploadService.uploadMultipleImageFiles(files);
+
+        await this.statisticsService.addNewStatistic({ type: StatType.UPLOAD_IMAGES, value: files.length }, userId);
+
+        return { urls };
     }
 
     @Post('from-url')

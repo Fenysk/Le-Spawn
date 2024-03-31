@@ -34,19 +34,23 @@ const step = ref<string>('photos');
  */
 const photoLoading = ref(false);
 const photosUrl = ref<string[]>([]);
+const photosUploadingCouter = ref(0);
 const handleUploadImages = async (event: any) => {
     const photos = event.target.files || event.srcElement.files;
 
     if (!photos.length) return;
 
-    const uploadService = new UploadService();
+    photosUploadingCouter.value += photos.length;
 
     loading.value = true;
     photoLoading.value = true;
+
+    const uploadService = new UploadService();
     try {
         for (const photo of photos) {
             const photoUrl = await uploadService.uploadImage(photo);
             photosUrl.value.push(photoUrl);
+            photosUploadingCouter.value--;
         }
     } catch (error: any) {
         alert(error.message);
@@ -118,6 +122,8 @@ const previousPhoto = () => {
 
     if (photoGameIds.value.includes(lastSortedPhotoId.value))
         photoGameIds.value = photoGameIds.value.filter(id => id !== lastSortedPhotoId.value);
+
+    isCreatingExtraContent.value = false;
 }
 
 /**
@@ -295,12 +301,12 @@ const handleAddingNewGameSuccess = () => {
                 </p>
                 <div class="flex flex-col gap-1">
                     <Input multiple required id="picture" type="file" @change="handleUploadImages"
-                        class="cursor-pointer" :disabled="loading" />
+                        class="cursor-pointer" />
                     <div class="flex flex-row flex-wrap gap-2 overflow-hidden rounded"
-                        v-if="loading || photosUrl.length">
+                        v-if="photosUrl.length || photoLoading">
                         <img v-for="image in photosUrl" :key="image" :src="image"
                             class="aspect-square h-24 w-24 rounded object-cover shadow-md" />
-                        <div v-if="photoLoading"
+                        <div v-for="index in photosUploadingCouter" :key="index"
                             class="flex aspect-square size-24 items-center justify-center rounded border shadow-md">
                             <Loader2 class="animate-spin text-accent" />
                         </div>
@@ -308,7 +314,7 @@ const handleAddingNewGameSuccess = () => {
                 </div>
             </div>
 
-            <Button :disabled="loading" type="submit" class="float-right">
+            <Button :disabled="loading || photosUploadingCouter" type="submit" class="float-right">
                 <Loader2 v-if="loading" class="mr-2 h-4 w-4 animate-spin" />
                 {{ loading ? 'Envoi des photos en cours...' : 'J`ai pris en photo chaque élément' }}
             </Button>
@@ -391,7 +397,8 @@ const handleAddingNewGameSuccess = () => {
                     <span>Photo précédente</span>
                 </Button>
 
-                <Button :disabled="loading" type="submit" class="float-right" v-if="!otherPhotosUrl.length && !isCreatingExtraContent">
+                <Button :disabled="loading" type="submit" class="float-right"
+                    v-if="!otherPhotosUrl.length && !isCreatingExtraContent">
                     <Loader2 v-if="loading" class="mr-2 h-4 w-4 animate-spin" />
                     {{ loading ? 'Un peu de patience...' : 'Étape suivante' }}
                 </Button>
@@ -427,7 +434,7 @@ const handleAddingNewGameSuccess = () => {
                     <Icon name="heroicons-solid:arrow-left" class="mr-2" />
                     <span>Étape précédente</span>
                 </Button>
-                
+
                 <Button :disabled="loading" type="submit" class="float-right">
                     <Loader2 v-if="loading" class="mr-2 h-4 w-4 animate-spin" />
                     {{ loading ? 'Un peu de patience...' : 'Étape suivante' }}
@@ -494,7 +501,7 @@ const handleAddingNewGameSuccess = () => {
                     <Icon name="heroicons-solid:arrow-left" class="mr-2" />
                     <span>Étape précédente</span>
                 </Button>
-                
+
                 <Button type="submit" :disabled="loading" class="float-right">
                     <Loader2 v-if="loading" class="mr-2 h-4 w-4 animate-spin" />
                     {{ loading ? 'Un peu de patience...' : 'Ajouter à la collection' }}
