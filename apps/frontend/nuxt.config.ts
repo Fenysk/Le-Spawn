@@ -17,7 +17,7 @@ export default defineNuxtConfig({
         'nuxt-icon',
         '@pinia/nuxt',
         'nuxt-highcharts',
-        '@kevinmarrec/nuxt-pwa'
+        '@vite-pwa/nuxt'
     ],
 
     pinia: {
@@ -25,26 +25,35 @@ export default defineNuxtConfig({
     },
 
     pwa: {
+        registerType: 'autoUpdate',
         manifest: {
             name: 'Le Spawn',
             short_name: 'Le Spawn',
             description: 'Toute ta collection au même endroit !',
-            lang: 'fr',
             theme_color: '#f23f3a',
+            background_color: '#f23f3a',
+            lang: 'fr',
             icons: [
                 {
                     src: '/Logo_192x192.png',
                     sizes: '192x192',
                     type: 'image/png',
+                    purpose: 'any'
                     
                 },
                 {
                     src: '/Logo_512x512.png',
                     sizes: '512x512',
                     type: 'image/png',
-                    maskable: true,
+                    purpose: 'any'
                 },
             ],
+            scope: '/',
+            start_url: '/',
+            orientation: 'portrait',
+            display: 'fullscreen',
+            id: 'le-spawn.fr',
+            categories: ['collection', 'jeux vidéo', 'manga', 'figurines', 'cartes'],
         },
     },
 
