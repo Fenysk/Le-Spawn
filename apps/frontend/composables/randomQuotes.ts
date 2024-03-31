@@ -140,7 +140,7 @@ export function useRandomQuotes() {
 
     const currentQuote = ref("");
 
-    function generateRandomQuote() {
+    const generateRandomQuote = () => {
         const randomIndex = Math.floor(Math.random() * punchlines.value.length);
         currentQuote.value = punchlines.value[randomIndex];
     }

@@ -25,12 +25,9 @@ export default defineNuxtConfig({
     },
 
     pwa: {
-        workbox: {
-            enabled: true
-        },
         manifest: {
             name: 'Le Spawn',
-            short_name: 'le_spawn',
+            short_name: 'Le Spawn',
             description: 'Toute ta collection au même endroit !',
             lang: 'fr',
             theme_color: '#f23f3a',
@@ -39,13 +36,15 @@ export default defineNuxtConfig({
                     src: '/Logo_192x192.png',
                     sizes: '192x192',
                     type: 'image/png',
+                    
                 },
                 {
                     src: '/Logo_512x512.png',
                     sizes: '512x512',
                     type: 'image/png',
+                    maskable: true,
                 },
-            ]
+            ],
         },
     },
 

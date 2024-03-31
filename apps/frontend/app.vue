@@ -1,6 +1,6 @@
 <script setup>
 useSeoMeta({
-    description: 'Toute ta collection dans un seul endroit !'
+    description: 'Toute ta collection dans un seul endroit !',
 })
 
 const NODE_ENV = useRuntimeConfig().public.NODE_ENV;
