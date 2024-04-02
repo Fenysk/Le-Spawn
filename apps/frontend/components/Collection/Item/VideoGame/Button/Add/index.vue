@@ -8,13 +8,12 @@ DialogTitle,
 DialogTrigger,
 } from '@/components/ui/dialog';
 import {
-Drawer,
-DrawerClose,
-DrawerContent,
-DrawerHeader,
-DrawerTitle,
-DrawerTrigger,
-} from '@/components/ui/drawer';
+Sheet,
+SheetContent,
+SheetHeader,
+SheetTitle,
+SheetTrigger
+} from '@/components/ui/sheet';
 import { createReusableTemplate, useMediaQuery } from '@vueuse/core';
 import { ref } from 'vue';
 
@@ -68,24 +67,17 @@ const handleAddingNewGameSuccess = () => {
         </DialogContent>
     </Dialog>
 
-    <Drawer v-else v-model:open="isOpen">
-        <DrawerTrigger as-child>
+    <Sheet v-else v-model:open="isOpen">
+        <SheetTrigger as-child>
             <TriggerContent />
-        </DrawerTrigger>
-        <DrawerContent>
-            <DrawerHeader class="text-left">
-                <DrawerTitle>
+        </SheetTrigger>
+        <SheetContent side="bottom">
+            <SheetHeader class="text-left">
+                <SheetTitle>
                     <TitleContent />
-                </DrawerTitle>
-            </DrawerHeader>
+                </SheetTitle>
+            </SheetHeader>
             <GameForm />
-            <DrawerFooter class="pt-2">
-                <DrawerClose as-child>
-                    <Button variant="outline">
-                        Fermer
-                    </Button>
-                </DrawerClose>
-            </DrawerFooter>
-        </DrawerContent>
-    </Drawer>
+        </SheetContent>
+    </Sheet>
 </template>
