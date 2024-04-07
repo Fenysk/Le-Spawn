@@ -140,6 +140,7 @@ export type ExtraContents = {
     name: string;
     type: string;
     state: State;
+    photos: string[];
     videoGameId: string;
 };
 

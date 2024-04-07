@@ -9,11 +9,10 @@ DialogTrigger,
 } from '@/components/ui/dialog';
 import {
 Drawer,
-DrawerClose,
 DrawerContent,
 DrawerHeader,
 DrawerTitle,
-DrawerTrigger,
+DrawerTrigger
 } from '@/components/ui/drawer';
 import { createReusableTemplate, useMediaQuery } from '@vueuse/core';
 import { ref } from 'vue';
@@ -35,7 +34,11 @@ const [GameTemplate, GameDetails] = createReusableTemplate()
 <template>
 
     <TitleTemplate>
-        <span class="font-acephimere">{{ videoGame.title }}</span>
+        <div class="flex items-center justify-between gap-4">
+            <h1 class="font-acephimere">{{ videoGame.title }}</h1>
+            <img class="platformLogo" :src="videoGame.Platform.squareLogoUrl"
+                :alt="`Logo de ${videoGame.Platform.name}`" />
+        </div>
     </TitleTemplate>
 
     <GameTemplate class="flex">
@@ -50,7 +53,7 @@ const [GameTemplate, GameDetails] = createReusableTemplate()
         <DialogTrigger as-child>
             <TriggerContent />
         </DialogTrigger>
-        <DialogContent class="sm:max-w-[425px]">
+        <DialogContent class="sm:max-w-[600px]">
             <DialogHeader>
                 <DialogTitle>
                     <TitleContent />
@@ -64,20 +67,27 @@ const [GameTemplate, GameDetails] = createReusableTemplate()
         <DrawerTrigger as-child>
             <TriggerContent />
         </DrawerTrigger>
-        <DrawerContent>
+        <DrawerContent class="max-h-[80vh]">
             <DrawerHeader class="text-left">
                 <DrawerTitle>
                     <TitleContent />
                 </DrawerTitle>
             </DrawerHeader>
-            <GameDetails />
+            <GameDetails class="px-4" />
             <DrawerFooter class="pt-2">
-                <DrawerClose as-child>
-                    <Button variant="outline">
-                        Fermer
-                    </Button>
-                </DrawerClose>
+                <Button>
+                    Modifier
+                </Button>
+                <Button variant="secondary">
+                    Supprimer
+                </Button>
             </DrawerFooter>
         </DrawerContent>
     </Drawer>
 </template>
+
+<style scoped>
+.platformLogo {
+    @apply h-8 overflow-hidden object-cover;
+}
+</style>
