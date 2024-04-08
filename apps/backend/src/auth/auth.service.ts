@@ -39,6 +39,11 @@ export class AuthService {
 
         const confirmationId: string = await this.emailService.sendEmailConfirmation(newUser);
 
+        if (confirmationId === null) {
+            await this.userService.deleteFullUser(newUser.id);
+            throw new ForbiddenException('Email not sent. Account not created');
+        }
+        
         const updatedUser = await this.userService.updateUser(newUser.id, {
             confirmationId
         })

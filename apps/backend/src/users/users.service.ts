@@ -228,12 +228,30 @@ export class UsersService {
         return updatedUser;
     }
 
-    async deleteUser(id: string): Promise<string> {
+    async deleteFullUser(id: string): Promise<string> {
         try {
+            const deletedUserProfile = await this.prismaService.profile.delete({
+                where: { userId: id }
+            });
+
+            const deletedUserPersonalInformation = await this.prismaService.personalInformation.delete({
+                where: { userId: id }
+            });
+
+            const deletedUserCollections = await this.prismaService.collection.deleteMany({
+                where: { userId: id }
+            });
+
             const deletedUser = await this.prismaService.user.delete({
                 where: { id }
             });
 
+            const deletedUserAddresses = await this.prismaService.address.deleteMany({
+                where: { userId: id }
+            });
+
+            console.log(`User ${deletedUser.email} deleted`)
+            
             return `${deletedUser.email} deleted`;
         } catch (error) {
             console.log(error);

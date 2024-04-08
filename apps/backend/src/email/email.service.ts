@@ -42,6 +42,9 @@ export class EmailService {
         const resendInstance = this.resendService.createResendInstance();
         const response = await resendInstance.emails.send(confirmationEmail)
 
+        if (response.error)
+            return null;
+
         return confirmationId;
     }
 

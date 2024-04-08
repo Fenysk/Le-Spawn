@@ -107,7 +107,7 @@ export class UsersController {
     async deleteUser(
         @Param('user_id') user_id: string
     ): Promise<string> {
-        return await this.usersService.deleteUser(user_id);
+        return await this.usersService.deleteFullUser(user_id);
     }
 
     @Roles(Role.USER)
@@ -115,7 +115,7 @@ export class UsersController {
     async deleteMyAccount(
         @GetUser('sub') user_id: string
     ): Promise<string> {
-        return await this.usersService.deleteUser(user_id);
+        return await this.usersService.deleteFullUser(user_id);
     }
 
 }
