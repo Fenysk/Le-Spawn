@@ -138,37 +138,35 @@
     {
       "id": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
       "title": "📝 TODO priority",
-      "cards": [
-        {
-          "id": "a6c23f38-cd6c-4156-8444-3993f4f03bac",
-          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
-          "title": "Add beta code",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        }
-      ]
+      "cards": []
     },
     {
       "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
       "title": "✅ IN PROGRESS",
-      "cards": [
-        {
-          "id": "8fe5c618-ebc7-40eb-a25e-734d2c66ea20",
-          "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
-          "title": "Change Mails template",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        }
-      ]
+      "cards": []
     },
     {
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "a6c23f38-cd6c-4156-8444-3993f4f03bac",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add beta code",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "8fe5c618-ebc7-40eb-a25e-734d2c66ea20",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Change Mails template",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "b5af2bef-046e-4b0f-a5d8-f30e19177576",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

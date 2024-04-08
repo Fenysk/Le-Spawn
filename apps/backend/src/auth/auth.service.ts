@@ -20,6 +20,15 @@ export class AuthService {
     ) { }
 
     async register(registerDto: RegisterDto): Promise<any> {
+
+        const betaCodes = this.configService.get('BETA_CODES') || [];
+        const betaCode = registerDto.betaCode;
+
+        console.log(betaCodes, betaCode);
+        
+        if (!betaCodes.includes(betaCode))
+            throw new ForbiddenException('Invalid beta code');
+
         const user = await this.userService.getUserByEmail(registerDto.email);
 
         if (user)

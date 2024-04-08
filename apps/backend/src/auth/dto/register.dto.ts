@@ -12,4 +12,7 @@ export class RegisterDto {
     @IsNotEmpty()
     @MinLength(3)
     readonly nickName: string;
+
+    @IsNotEmpty()
+    readonly betaCode: string;
 }

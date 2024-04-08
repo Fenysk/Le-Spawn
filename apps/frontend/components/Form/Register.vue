@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import {
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage
+FormControl,
+FormField,
+FormItem,
+FormLabel,
+FormMessage
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { toTypedSchema } from '@vee-validate/zod';
@@ -16,6 +16,7 @@ const formSchema = toTypedSchema(zod.object({
     email: zod.string().email(),
     password: zod.string().min(8),
     nickName: zod.string().min(3),
+    betaCode: zod.string(),
 }));
 
 const form = useForm({
@@ -77,6 +78,16 @@ const handleRegisterSuccess = () => {
                 <FormLabel>Mot de passe</FormLabel>
                 <FormControl>
                     <Input type="password" placeholder="********" v-bind="componentField" />
+                </FormControl>
+                <FormMessage />
+            </FormItem>
+        </FormField>
+
+        <FormField v-slot="{ componentField }" name="betaCode">
+            <FormItem class="mt-2">
+                <FormLabel>Code bêta</FormLabel>
+                <FormControl>
+                    <Input type="text" placeholder="Code bêta" v-bind="componentField" />
                 </FormControl>
                 <FormMessage />
             </FormItem>
