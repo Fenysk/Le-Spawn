@@ -27,15 +27,11 @@ export class AuthService {
 
         const hashedPassword = await argon2.hash(registerDto.password);
 
-        console.log(registerDto);
-
         const newUser: any = await this.userService.createUser({
             email: registerDto.email,
             hashedPassword,
             nickName: registerDto.nickName,
         });
-
-        console.log(newUser);
 
         const confirmationId: string = await this.emailService.sendEmailConfirmation(newUser);
 

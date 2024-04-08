@@ -110,6 +110,11 @@ export class UsersService {
                         name: `Collection de ${data.nickName}`
                     }
                 }
+            },
+            include: {
+                Profile: true,
+                PersonalInformation: true,
+                Collections: true
             }
         });
         return newUser;

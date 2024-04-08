@@ -116,15 +116,6 @@
           "comments": []
         },
         {
-          "id": "a6c23f38-cd6c-4156-8444-3993f4f03bac",
-          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
-          "title": "Add beta code",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        },
-        {
           "id": "2ca76ab3-c7f4-4535-8baa-7d82325de14b",
           "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
           "title": "User can delete his profile",
@@ -149,9 +140,9 @@
       "title": "📝 TODO priority",
       "cards": [
         {
-          "id": "8fe5c618-ebc7-40eb-a25e-734d2c66ea20",
+          "id": "a6c23f38-cd6c-4156-8444-3993f4f03bac",
           "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
-          "title": "Change Mails template",
+          "title": "Add beta code",
           "description": "",
           "labels": [],
           "checkboxes": [],
@@ -162,7 +153,17 @@
     {
       "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
       "title": "✅ IN PROGRESS",
-      "cards": []
+      "cards": [
+        {
+          "id": "8fe5c618-ebc7-40eb-a25e-734d2c66ea20",
+          "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
+          "title": "Change Mails template",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
     },
     {
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

@@ -27,6 +27,8 @@ export class EmailService {
 
 
         const template = await this.templateService.getTemplate('confirmation')
+        if (!template)
+            return null;
 
         const htmlEmail = this.templateService.replaceDataInMailTemplate(template, emailDataToReplace)
         const textEmail = this.templateService.transformTemplateToText(htmlEmail)
@@ -52,11 +54,13 @@ export class EmailService {
         const from = this.configService.get<string>('RESEND_FROM_ADDRESS')
         const subject = 'Welcome to Play & Swap'
 
-        const nickName = user.Profile.nickName || 'nouveau joueur'
+        const nickName = user?.Profile?.nickName || 'nouveau joueur'
 
         const emailDataToReplace = { nickName }
 
         const template = await this.templateService.getTemplate('welcome')
+        if (!template)
+            return null;
 
         const htmlEmail = this.templateService.replaceDataInMailTemplate(template, emailDataToReplace)
         const textEmail = this.templateService.transformTemplateToText(htmlEmail)
@@ -71,6 +75,8 @@ export class EmailService {
 
         const resendInstance = this.resendService.createResendInstance();
         await resendInstance.emails.send(welcomeEmail)
+
+        return welcomeEmail;
     }
 
 }

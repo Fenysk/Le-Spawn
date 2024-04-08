@@ -1,29 +1,22 @@
 import { Injectable } from "@nestjs/common";
+import * as fs from "fs";
+import * as path from "path";
 
 @Injectable()
 export class TemplateService {
 
     async getTemplate(templateName: string): Promise<string> {
-        switch (templateName) {
-            case 'confirmation':
-                return `
-                <html>
-                    <h1>Confirm your email address</h1>
-                    <p>Click the link below to confirm your email address</p>
-                    <a href="{{confirmation_link}}">Confirm email address</a>
-                </html>
-                `;
-            case 'welcome':
-                return `
-                <html>
-                    <h1>Welcome to Play & Swap</h1>
-                    <p>Hi {{nickName}}, welcome to Play & Swap</p>
-                </html>
-                `;
-            default:
-                return '';
+        try {
+            const templatePath = path.join(__dirname, '../templates', `${templateName}.html`);
+
+            const templateContent = await fs.promises.readFile(templatePath, 'utf8');
+
+            return templateContent;
+        } catch (error) {
+            return null;            
         }
     }
+
 
     replaceDataInMailTemplate(template: string, data: any): string {
         for (const key in data)
