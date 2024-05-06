@@ -83,18 +83,18 @@
           "comments": []
         },
         {
-          "id": "59cbbfb5-bff9-4337-93ea-d5aa84e04fdc",
+          "id": "137cbd8a-c21f-4d5f-b016-aeb301f1b9ad",
           "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
-          "title": "Photos should be compressed in front",
+          "title": "splash screen",
           "description": "",
           "labels": [],
           "checkboxes": [],
           "comments": []
         },
         {
-          "id": "137cbd8a-c21f-4d5f-b016-aeb301f1b9ad",
+          "id": "47c0f0ec-4e0f-4fb2-95e9-541595b8e181",
           "listId": "b78cf187-9e55-465c-87e5-93780d416cf9",
-          "title": "splash screen",
+          "title": "Fix adding game to collection",
           "description": "",
           "labels": [],
           "checkboxes": [],
@@ -132,13 +132,32 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "59cbbfb5-bff9-4337-93ea-d5aa84e04fdc",
+          "listId": "89f37cf8-6e19-43eb-9b51-959d339298e2",
+          "title": "Photos should be compressed in front",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
     {
       "id": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
       "title": "📝 TODO priority",
-      "cards": []
+      "cards": [
+        {
+          "id": "fc6a2333-326b-4e6a-8ea6-9bad79e1538f",
+          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
+          "title": "Fix adding to collection button",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        }
+      ]
     },
     {
       "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",

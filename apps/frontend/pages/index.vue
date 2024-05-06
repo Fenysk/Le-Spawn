@@ -11,6 +11,12 @@ const loading = ref(false);
 const authStore = useAuthStore();
 const user = computed(() => authStore.getUser());
 
+watch(user, async (newUser) => {
+    if (newUser) {
+        navigateTo(`/collections/${newUser.Collections[0].id}`);
+    }
+});
+
 const statisticsService = new StatisticsService();
 onMounted(async () => await statisticsService.sendNewStatistic({ type: StatType.HOME_PAGE_VISIT }));
 </script>
