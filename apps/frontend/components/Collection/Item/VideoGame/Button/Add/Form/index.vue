@@ -279,7 +279,7 @@ const handleAddingNewGameSuccess = () => {
                 </p>
                 <div class="flex flex-col gap-1">
                     <Input multiple required id="picture" type="file" @change="handleUploadImages"
-                        class="cursor-pointer" />
+                        accept="image/png, image/jpg, image/gif, image/webp" class="cursor-pointer" />
                     <div class="flex flex-row flex-wrap gap-2 overflow-hidden rounded"
                         v-if="photosUrl.length || photoLoading">
                         <img v-for="image in photosUrl" :key="image" :src="image"
