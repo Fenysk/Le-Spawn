@@ -53,13 +53,21 @@ const setupLinks = () => {
             order: 7,
             action: null
         },
+                {
+            title: 'Réclamations',
+            path: '/contact',
+            icon: 'mingcute:mail-line',
+            order: 8,
+            action: null
+        },
         {
             title: 'Logout',
             path: null,
             icon: 'mingcute:exit-door-line',
-            order: 8,
+            order: 9,
             action: handleLogout
-        }
+        },
+
     ]
 
     const adminUserLinks: Link[] = [

@@ -19,6 +19,7 @@ import { AnalyzeModule } from './analyze/analyze.module';
 import { CollectionsModule } from './collections/collections.module';
 import { BarcodeModule } from './barcode/barcode.module';
 import { StatisticsModule } from './statistics/statistics.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
     imports: [
@@ -41,7 +42,8 @@ import { StatisticsModule } from './statistics/statistics.module';
         AnalyzeModule,
         CollectionsModule,
         BarcodeModule,
-        StatisticsModule
+        StatisticsModule,
+        ReportsModule
     ],
     controllers: [AppController],
     providers: [AppService],

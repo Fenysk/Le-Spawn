@@ -30,6 +30,7 @@ model User {
     PersonalInformation PersonalInformation?
     Collections         Collection[]
     Statistic           Statistic[]
+    Report              Report[]
 }
 
 model Profile {
@@ -79,6 +80,22 @@ model Address {
     Order Order[]
 
     @@map("addresses")
+}
+
+model Report {
+    id String @id @unique
+
+    subject   String
+    message   String
+    photosUrl String[] @map("photos_url")
+
+    createdAt DateTime @default(now()) @map("created_at")
+    updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+
+    userId String @map("user_id")
+    User   User   @relation(fields: [userId], references: [id])
+
+    @@map("reports")
 }
 
 model Item {
@@ -229,7 +246,7 @@ model Statistic {
     id String @id @unique
 
     type  String
-    value Float?   @default(1)
+    value Float? @default(1)
 
     createdAt DateTime @default(now()) @map("created_at")
 
