@@ -30,8 +30,8 @@ const newGameData = ref({
     platformId: '',
     title: '',
     mainPhoto: '',
-    edition: '',
-    region: '',
+    edition: 'Standard',
+    region: 'PAL',
     photoBoxIds: [],
     photoGameIds: [],
     extraContents: [],
@@ -146,6 +146,7 @@ const stateGame = ref<string | undefined>(undefined);
 /**
  * Details
  */
+const analyseEnabled = ref(true);
 const analyzedGame = ref<GameAnalyzedType | null>(null);
 const hasAlreadyAnalyzedPhotos = ref(false);
 const analyzeService = new AnalyzeService();
@@ -201,7 +202,7 @@ const nextStep = async () => {
     switch (step.value) {
 
         case 'photos':
-            if (!hasAlreadyAnalyzedPhotos.value)
+            if (!hasAlreadyAnalyzedPhotos.value && analyseEnabled.value)
                 await handleAnalyzePhotos();
             newGameData.value.title = analyzedGame.value?.title || '';
             newGameData.value.edition = analyzedGame.value?.edition || '';
@@ -290,6 +291,11 @@ const handleAddingNewGameSuccess = () => {
                     </div>
                 </div>
             </div>
+
+            <Button @click.prevent="analyseEnabled = !analyseEnabled" variant="secondary">
+                <Icon name="heroicons-solid:light-bulb" class="mr-2" />
+                <span>{{ analyseEnabled ? 'Désactiver' : 'Activer' }} l'IA</span>
+            </Button>
 
             <Button :disabled="loading || photosUploadingCounter" type="submit" class="float-right">
                 <Loader2 v-if="loading" class="mr-2 h-4 w-4 animate-spin" />
