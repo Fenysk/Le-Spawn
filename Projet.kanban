@@ -156,37 +156,36 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
-        },
-        {
-          "id": "7a23dba1-7ed7-4faf-bf3f-ee97b9e11567",
-          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
-          "title": "Add IA counter, limit, etc...",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
         }
       ]
     },
     {
       "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
       "title": "✅ IN PROGRESS",
-      "cards": [
-        {
-          "id": "fc6a2333-326b-4e6a-8ea6-9bad79e1538f",
-          "listId": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
-          "title": "Fix adding to collection button",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        }
-      ]
+      "cards": []
     },
     {
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "7a23dba1-7ed7-4faf-bf3f-ee97b9e11567",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add IA counter, limit, etc...",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "fc6a2333-326b-4e6a-8ea6-9bad79e1538f",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Fix adding to collection button",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "a6c23f38-cd6c-4156-8444-3993f4f03bac",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",

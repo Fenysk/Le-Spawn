@@ -156,7 +156,7 @@ const handleAnalyzePhotos = async () => {
         analyzedGame.value = await analyzeService.analyzeGamePhotosWithAnthropicHaiku(photosUrl.value);
         hasAlreadyAnalyzedPhotos.value = true;
     } catch (error) {
-        alert('Une erreur est survenue lors de l\'analyse des photos');
+        console.error(error);
     } finally {
         loading.value = false;
     }

@@ -1,4 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { StatType } from 'src/statistics/enums/stat-type.enum';
+import { StatisticsService } from 'src/statistics/statistics.service';
+import { UsersService } from 'src/users/users.service';
 import { AnthropicService } from './services/anthropic.service';
 
 @Injectable()
@@ -6,7 +9,48 @@ export class AnalyzeService {
 
     constructor(
         private readonly anthropicService: AnthropicService,
+        private readonly statisticsService: StatisticsService,
+        private readonly userService: UsersService
     ) { }
+
+    async getUserRemainingAnalyses(userId: string) {
+        // Get number of images analyzed by the user today
+        // Get usage limit for the user with his roles
+        // Compare both values
+        // Return true if the user can analyze images, false otherwise
+
+        const allUser_AI_USAGES = await this.statisticsService.getSpecificStatistics({ type: StatType.AI_USAGE, userId });
+
+        const startOfToday = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+        const endOfToday = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate(), 23, 59, 59, 999);
+
+        const todayUser_AI_USAGES = allUser_AI_USAGES.stats.filter(stat => {
+            const createdAt = new Date(stat.createdAt);
+            return createdAt >= startOfToday && createdAt <= endOfToday;
+        });
+
+        const user = await this.userService.getUserById(userId);
+
+        let limit = 0;
+
+        switch (user.roles) {
+            case 'USER':
+                limit = 5;
+                break;
+            case 'PREMIUM':
+                limit = 50;
+                break;
+            case 'ADMIN':
+                limit = 10000;
+                break;
+            default:
+                limit = 0;
+        }
+
+        const remainingUsages = limit - todayUser_AI_USAGES.length;
+
+        return remainingUsages;
+    }
 
     async analyzeGamePhotosWithAnthropic(language: string, photos: string[], model: string) {
 

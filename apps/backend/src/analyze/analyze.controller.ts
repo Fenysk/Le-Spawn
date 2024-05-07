@@ -33,6 +33,9 @@ export class AnalyzeController {
         @Body('language') language: string,
         @Body('photos') photos: string[]
     ) {
+        const remainingUsages = await this.analyzeService.getUserRemainingAnalyses(userId);
+        if (remainingUsages === 0) throw new Error('Not allowed to analyze images, please upgrade your account.');
+
         const response = await this.analyzeService.analyzeGamePhotosWithAnthropic(language, photos, 'claude-3-haiku-20240307');
 
         const cost = response.usage.total_cost_in_cents;
