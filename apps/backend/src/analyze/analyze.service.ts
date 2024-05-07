@@ -33,19 +33,14 @@ export class AnalyzeService {
 
         let limit = 0;
 
-        switch (user.roles) {
-            case 'USER':
-                limit = 5;
-                break;
-            case 'PREMIUM':
-                limit = 50;
-                break;
-            case 'ADMIN':
-                limit = 10000;
-                break;
-            default:
-                limit = 0;
-        }
+        if (user.roles.includes('USER'))
+            limit = 5;
+        
+        if (user.roles.includes('PREMIUM'))
+            limit = 50;
+
+        if (user.roles.includes('ADMIN'))
+            return 10000;
 
         const remainingUsages = limit - todayUser_AI_USAGES.length;
 
