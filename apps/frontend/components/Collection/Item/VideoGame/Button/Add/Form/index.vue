@@ -1,10 +1,6 @@
 <script setup lang="ts">
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { toTypedSchema } from '@vee-validate/zod';
 import { Loader2 } from 'lucide-vue-next';
-import { useForm } from 'vee-validate';
-import * as z from 'zod';
 import Button from '~/components/ui/button/Button.vue';
 import Label from '~/components/ui/label/Label.vue';
 import AnalyzeService from '~/services/analyze.service';
@@ -29,18 +25,32 @@ type ExtraContent = {
 
 const step = ref<string>('photos');
 
+const newGameData = ref({
+    collectionId: '',
+    platformId: '',
+    title: '',
+    mainPhoto: '',
+    edition: '',
+    region: '',
+    photoBoxIds: [],
+    photoGameIds: [],
+    extraContents: [],
+    stateBox: '',
+    stateGame: '',
+})
+
 /**
  * Photos
  */
 const photoLoading = ref(false);
 const photosUrl = ref<string[]>([]);
-const photosUploadingCouter = ref(0);
+const photosUploadingCounter = ref(0);
 const handleUploadImages = async (event: any) => {
     const photos = event.target.files || event.srcElement.files;
 
     if (!photos.length) return;
 
-    photosUploadingCouter.value += photos.length;
+    photosUploadingCounter.value += photos.length;
 
     loading.value = true;
     photoLoading.value = true;
@@ -50,7 +60,7 @@ const handleUploadImages = async (event: any) => {
         for (const photo of photos) {
             const photoUrl = await uploadService.uploadImage(photo);
             photosUrl.value.push(photoUrl);
-            photosUploadingCouter.value--;
+            photosUploadingCounter.value--;
         }
     } catch (error: any) {
         alert(error.message);
@@ -136,7 +146,6 @@ const stateGame = ref<string | undefined>(undefined);
 /**
  * Details
  */
-
 const analyzedGame = ref<GameAnalyzedType | null>(null);
 const hasAlreadyAnalyzedPhotos = ref(false);
 const analyzeService = new AnalyzeService();
@@ -192,18 +201,16 @@ const nextStep = async () => {
     switch (step.value) {
 
         case 'photos':
-            step.value = 'sorting';
-            break;
-
-        case 'sorting':
-            step.value = 'states';
-            break;
-
-        case 'states':
             if (!hasAlreadyAnalyzedPhotos.value)
                 await handleAnalyzePhotos();
-            setOtherDataToForm();
-            step.value = 'details';
+            newGameData.value.title = analyzedGame.value?.title || '';
+            newGameData.value.edition = analyzedGame.value?.edition || '';
+            newGameData.value.region = analyzedGame.value?.region || '';
+            newGameData.value.platformId = getPlatformId(analyzedGame.value?.platformName);
+            newGameData.value.mainPhoto = photosUrl.value[(Number(analyzedGame.value?.mainPhotoId) - 1) || 0];
+            newGameData.value.stateBox = 'GOOD';
+            newGameData.value.stateGame = 'GOOD';
+            step.value = 'details'
             break;
 
         case 'details':
@@ -217,62 +224,32 @@ const nextStep = async () => {
 /**
  * Register
  */
-const formSchema = toTypedSchema(z.object({
-    title: z.string().min(3).max(255),
-    edition: z.string().min(3).max(255),
-    region: z.string().min(3).max(20),
-    platformId: z.string().length(13),
-    collectionId: z.string().length(13),
-    stateBox: z.string().min(3).max(255).optional(),
-    stateGame: z.string().min(3).max(255).optional(),
-    photosBox: z.array(z.string()),
-    photosGame: z.array(z.string()),
-    mainPhoto: z.string(),
-}))
-
-const form = useForm({
-    validationSchema: formSchema,
-    initialValues: {
-        edition: 'Standard',
-    },
-})
-
 const props = defineProps({
     collectionId: String,
 })
-
-const setOtherDataToForm = () => {
-    form.setValues({
-        stateBox: stateBox.value,
-        stateGame: stateGame.value,
-        collectionId: props.collectionId,
-        mainPhoto: photosUrl.value[Number(analyzedGame.value?.mainPhotoId) || 0],
-        title: analyzedGame.value?.title,
-        edition: analyzedGame.value?.edition,
-        region: analyzedGame.value?.region,
-        platformId: getPlatformId(analyzedGame.value?.platformName),
-        photosBox: photoBoxIds.value.map(id => photosUrl.value[id]),
-        photosGame: photoGameIds.value.map(id => photosUrl.value[id]),
-    });
-}
 
 /**
  * Register game
  */
 const loading = ref(false);
 const collectionsService = new CollectionsService();
-const handleRegisterGame = form.handleSubmit(async () => {
-    const gameData = form.values;
+const checkDataValidity = () => {
+    newGameData.value.collectionId = props.collectionId ?? '';
+    return true;
+}
+const handleRegisterGame = async () => {
+    if (!checkDataValidity()) return;
+
     try {
         loading.value = true;
-        await collectionsService.addNewVideoGameToCollection(gameData);
+        await collectionsService.addNewVideoGameToCollection(newGameData.value);
         handleAddingNewGameSuccess();
     } catch (error) {
         alert('Une erreur est survenue lors de l\'ajout du jeu');
     } finally {
         loading.value = false;
     }
-})
+}
 
 const emit = defineEmits(['addingNewGameSuccess']);
 const handleAddingNewGameSuccess = () => {
@@ -283,12 +260,12 @@ const handleAddingNewGameSuccess = () => {
 <template>
     <div class="w-full">
 
-        <div class="my-4 mb-6 max-h-48 max-w-80 overflow-auto" v-show="false">
+        <div class="my-4 mb-6 max-h-48 max-w-80 overflow-auto" v-show="true">
             <pre>photoBoxIds: {{ photoBoxIds }}</pre>
             <pre>photoGameIds: {{ photoGameIds }}</pre>
             <pre>extraContents: {{ extraContents }}</pre>
             <pre>analyzedGame: {{ analyzedGame }}</pre>
-            <pre>form.values: {{ form.values }}</pre>
+            <pre>newGameData: {{ newGameData }}</pre>
         </div>
 
         <form id="Photos" class="space-y-6" v-if="step === 'photos'" @submit.prevent="nextStep">
@@ -306,7 +283,7 @@ const handleAddingNewGameSuccess = () => {
                         v-if="photosUrl.length || photoLoading">
                         <img v-for="image in photosUrl" :key="image" :src="image"
                             class="aspect-square h-24 w-24 rounded object-cover shadow-md" />
-                        <div v-for="index in photosUploadingCouter" :key="index"
+                        <div v-for="index in photosUploadingCounter" :key="index"
                             class="flex aspect-square size-24 items-center justify-center rounded border shadow-md">
                             <Loader2 class="animate-spin text-accent" />
                         </div>
@@ -314,14 +291,14 @@ const handleAddingNewGameSuccess = () => {
                 </div>
             </div>
 
-            <Button :disabled="loading || photosUploadingCouter" type="submit" class="float-right">
+            <Button :disabled="loading || photosUploadingCounter" type="submit" class="float-right">
                 <Loader2 v-if="loading" class="mr-2 h-4 w-4 animate-spin" />
                 {{ loading ? 'Envoi des photos en cours...' : 'J`ai pris en photo chaque élément' }}
             </Button>
 
         </form>
 
-        <form id="Sorting" class="max-h-[70vh] space-y-6 overflow-auto" v-if="step === 'sorting'"
+        <!-- <form id="Sorting" class="max-h-[70vh] space-y-6 overflow-auto" v-if="step === 'sorting'"
             @submit.prevent="nextStep">
 
             <div v-if="otherPhotosUrl.length">
@@ -403,9 +380,9 @@ const handleAddingNewGameSuccess = () => {
                     {{ loading ? 'Un peu de patience...' : 'Étape suivante' }}
                 </Button>
             </div>
-        </form>
+        </form> -->
 
-        <form id="States" class="space-y-6" v-if="step === 'states'" @submit.prevent="nextStep">
+        <!-- <form id="States" class="space-y-6" v-if="step === 'states'" @submit.prevent="nextStep">
 
             <div class="flex flex-col gap-2" v-if="photoBoxIds.length">
                 <Label class="font-semibold">État de la boîte</Label>
@@ -441,63 +418,42 @@ const handleAddingNewGameSuccess = () => {
                 </Button>
             </div>
 
-        </form>
+        </form> -->
 
         <form id="Details" class="space-y-6" v-if="step === 'details'" @submit.prevent="nextStep">
 
-            <FormField v-slot="{ componentField }" name="platformId">
-                <FormItem>
-                    <FormLabel class="font-semibold">Plateforme</FormLabel>
-                    <Select v-bind="componentField">
-                        <FormControl>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Select a platform" />
-                            </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                            <SelectGroup>
-                                <SelectItem v-for="platform in platforms" :key="platform.id" :value="platform.id">
-                                    {{ platform.name }}
-                                </SelectItem>
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
-                    <FormMessage />
-                </FormItem>
-            </FormField>
+            <div class="flex flex-col gap-2">
+                <Label class="font-semibold">Plateforme</Label>
+                <Select v-model="newGameData.platformId" required>
+                    <SelectTrigger>
+                        <SelectValue placeholder="Sélectionnez une plateforme" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup>
+                            <SelectItem v-for="platform in platforms" :key="platform.id" :value="platform.id">
+                                {{ platform.name }}
+                            </SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
+            </div>
+            <div class="flex flex-col gap-2">
+                <Label class="font-semibold">Nom du jeu</Label>
+                <Input required type="text" v-model="newGameData.title" />
+            </div>
 
-            <FormField v-slot="{ componentField }" name="title">
-                <FormItem>
-                    <FormLabel class="font-semibold">Nom du jeu</FormLabel>
-                    <FormControl>
-                        <Input type="text" v-bind="componentField" />
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>
-            </FormField>
+            <div class="flex flex-col gap-2">
+                <Label class="font-semibold">Edition</Label>
+                <Input type="text" v-model="newGameData.edition" />
+            </div>
 
-            <FormField v-slot="{ componentField }" name="edition">
-                <FormItem>
-                    <FormLabel class="font-semibold">Edition</FormLabel>
-                    <FormControl>
-                        <Input type="text" v-bind="componentField" />
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>
-            </FormField>
-
-            <FormField v-slot="{ componentField }" name="region">
-                <FormItem>
-                    <FormLabel class="font-semibold">Région</FormLabel>
-                    <FormControl>
-                        <Input type="text" v-bind="componentField" />
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>
-            </FormField>
+            <div class="flex flex-col gap-2">
+                <Label class="font-semibold">Région</Label>
+                <Input type="text" v-model="newGameData.region" />
+            </div>
 
             <div>
-                <Button @click.prevent="step = 'states'" class="float-left" :disabled="loading">
+                <Button @click.prevent="step = 'photos'" class="float-left" :disabled="loading">
                     <Icon name="heroicons-solid:arrow-left" class="mr-2" />
                     <span>Étape précédente</span>
                 </Button>
