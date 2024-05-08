@@ -192,11 +192,9 @@ const handleDeleteVideoGame = async () => {
         </div>
 
         <div class="mt-2 flex flex-col gap-2">
-            <Button>
-                Modifier
-            </Button>
-            <Button variant="secondary" @click="handleDeleteVideoGame">
-                Supprimer
+            <Button variant="secondary" @click.prevent="handleDeleteVideoGame">
+                <Icon name="heroicons-solid:trash" class="mr-2" />
+                Retirer de la collection
             </Button>
         </div>
 
