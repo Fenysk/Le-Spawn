@@ -10,7 +10,7 @@ const route = useRoute();
 const router = useRouter();
 
 const redirectUrl = route.query.redirect;
-const login = route.query.login;
+const login = route.query.login || 'true'
 
 if (redirectUrl) {
     const urlToNavigate = Array.isArray(redirectUrl) ? redirectUrl[0] : redirectUrl;

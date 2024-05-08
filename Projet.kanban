@@ -147,35 +147,7 @@
     {
       "id": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
       "title": "📝 TODO priority",
-      "cards": [
-        {
-          "id": "652147bc-38ff-4aa8-abb9-9b2df77edaea",
-          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
-          "title": "Add content in \"avant-propos\"",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        },
-        {
-          "id": "bd493fdc-d6f4-4748-8baa-20b8ec051472",
-          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
-          "title": "Login by default",
-          "description": "",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        },
-        {
-          "id": "3c95221d-9b36-4e02-a4c8-c17886c93680",
-          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
-          "title": "change IA region",
-          "description": "PAL\nNTSC\nNTSC-J\nFREE\nDEMAT",
-          "labels": [],
-          "checkboxes": [],
-          "comments": []
-        }
-      ]
+      "cards": []
     },
     {
       "id": "2ffb0e71-94d9-490a-9e63-27a59fc7ed48",
@@ -186,6 +158,33 @@
       "id": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
       "title": "⚙️ FINISHED",
       "cards": [
+        {
+          "id": "bd493fdc-d6f4-4748-8baa-20b8ec051472",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Login by default",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "652147bc-38ff-4aa8-abb9-9b2df77edaea",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "Add content in \"avant-propos\"",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
+        {
+          "id": "3c95221d-9b36-4e02-a4c8-c17886c93680",
+          "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
+          "title": "change IA region",
+          "description": "PAL\nNTSC\nNTSC-J\nFREE\nDEMAT",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
+        },
         {
           "id": "7a23dba1-7ed7-4faf-bf3f-ee97b9e11567",
           "listId": "f4c3ae55-cb87-469f-b698-5f69d88f3d7a",
