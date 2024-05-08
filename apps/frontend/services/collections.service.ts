@@ -1,5 +1,4 @@
 export default class CollectionsService {
-
     private API_URL: string;
 
     constructor() {
@@ -75,6 +74,29 @@ export default class CollectionsService {
             const videoGame = await response.json();
 
             return videoGame;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async deleteVideoGame(videoGameId: string): Promise<boolean> {
+        const authStore = useAuthStore();
+        const accessToken = authStore.getAccessToken();
+
+        try {
+            const response = await fetch(`${this.API_URL}/video-games/${videoGameId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            });
+
+            console.log(response);
+
+            if (!response.ok) throw await response.json();
+            
+            return true;
         } catch (error) {
             throw error;
         }

@@ -77,10 +77,10 @@ const displayStateEmoji = (state: string) => {
                             <span class="mr-1">Jeu</span>
                             <Icon name="mingcute:album-line" />
                         </td>
-                        <td>
+                        <!-- <td>
                             <span class="mr-1">Extras</span>
                             <Icon name="mingcute:attachment-2-fill" />
-                        </td>
+                        </td> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -97,13 +97,13 @@ const displayStateEmoji = (state: string) => {
                                 {{ displayStateEmoji(videoGame.stateGame) }}
                             </span>
                         </td>
-                        <td>
+                        <!-- <td>
                             <span class="font-semibold" v-if="videoGame.extraContents.length">
                                 {{ videoGame.extraContents.length }}
                                 {{ videoGame.extraContents.length > 1 ? 'objets' : 'objet' }}
                             </span>
                             <span class="font-semibold" v-else>aucun</span>
-                        </td>
+                        </td> -->
                     </tr>
                 </tbody>
             </table>

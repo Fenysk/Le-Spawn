@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
-import type { VideoGame } from '~/services/collections.service';
+import CollectionsService, { type VideoGame } from '~/services/collections.service';
 
 const props = defineProps<{
     videoGame: VideoGame;
@@ -10,6 +10,8 @@ const props = defineProps<{
 const photosExtra = computed(() => {
     return props.videoGame.extraContents.map((content) => content.photos.map((url) => url)).flat();
 });
+
+const loading = ref(false);
 
 const displayStateBoxLabel = (state: string) => {
     switch (state) {
@@ -78,6 +80,22 @@ const displayStateEmoji = (state: string) => {
             return '❓';
     }
 };
+
+const collectionsService = new CollectionsService();
+const handleDeleteVideoGame = async () => {
+    const confirm = window.confirm('Êtes-vous sûr de vouloir supprimer ce jeu ?');
+    if (!confirm) return;
+
+    try {
+        loading.value = true;
+        await collectionsService.deleteVideoGame(props.videoGame.id);
+        window.location.reload();
+    } catch (error) {
+        alert('Une erreur est survenue lors de la suppression du jeu.');
+    } finally {
+        loading.value = false;
+    }
+};
 </script>
 
 <template>
@@ -132,10 +150,10 @@ const displayStateEmoji = (state: string) => {
                         <span class="mr-1">Jeu</span>
                         <Icon name="mingcute:album-line" />
                     </td>
-                    <td>
+                    <!-- <td>
                         <span class="mr-1">Extras</span>
                         <Icon name="mingcute:attachment-2-fill" />
-                    </td>
+                    </td> -->
                 </tr>
             </thead>
             <tbody>
@@ -152,13 +170,13 @@ const displayStateEmoji = (state: string) => {
                             {{ displayStateEmoji(videoGame.stateGame) }}
                         </span>
                     </td>
-                    <td>
+                    <!-- <td>
                         <span class="font-semibold" v-if="videoGame.extraContents.length">
                             {{ videoGame.extraContents.length }}
                             {{ videoGame.extraContents.length > 1 ? 'objets' : 'objet' }}
                         </span>
                         <span class="font-semibold" v-else>aucun</span>
-                    </td>
+                    </td> -->
                 </tr>
             </tbody>
         </table>
@@ -171,6 +189,15 @@ const displayStateEmoji = (state: string) => {
                 </li>
             </ul>
             <p v-else>Aucun contenu supplémentaire renseigné.</p>
+        </div>
+
+        <div class="mt-2 flex flex-col gap-2">
+            <Button>
+                Modifier
+            </Button>
+            <Button variant="secondary" @click="handleDeleteVideoGame">
+                Supprimer
+            </Button>
         </div>
 
     </div>

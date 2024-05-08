@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button';
 import {
 Dialog,
 DialogContent,
@@ -74,14 +73,6 @@ const [GameTemplate, GameDetails] = createReusableTemplate()
                 </DrawerTitle>
             </DrawerHeader>
             <GameDetails class="px-4" />
-            <DrawerFooter class="pt-2">
-                <Button>
-                    Modifier
-                </Button>
-                <Button variant="secondary">
-                    Supprimer
-                </Button>
-            </DrawerFooter>
         </DrawerContent>
     </Drawer>
 </template>

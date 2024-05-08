@@ -156,6 +156,15 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "bd493fdc-d6f4-4748-8baa-20b8ec051472",
+          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
+          "title": "Login by default",
+          "description": "",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
