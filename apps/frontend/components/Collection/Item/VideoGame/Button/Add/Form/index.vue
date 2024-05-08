@@ -146,7 +146,6 @@ const stateGame = ref<string | undefined>(undefined);
 /**
  * Details
  */
-const analyseEnabled = ref(true);
 const analyzedGame = ref<GameAnalyzedType | null>(null);
 const hasAlreadyAnalyzedPhotos = ref(false);
 const analyzeService = new AnalyzeService();
@@ -202,7 +201,7 @@ const nextStep = async () => {
     switch (step.value) {
 
         case 'photos':
-            if (!hasAlreadyAnalyzedPhotos.value && analyseEnabled.value)
+            if (!hasAlreadyAnalyzedPhotos.value)
                 await handleAnalyzePhotos();
             newGameData.value.title = analyzedGame.value?.title || '';
             newGameData.value.edition = analyzedGame.value?.edition || '';
@@ -261,25 +260,17 @@ const handleAddingNewGameSuccess = () => {
 <template>
     <div class="w-full">
 
-        <div class="my-4 mb-6 max-h-48 max-w-80 overflow-auto" v-show="true">
-            <pre>photoBoxIds: {{ photoBoxIds }}</pre>
-            <pre>photoGameIds: {{ photoGameIds }}</pre>
-            <pre>extraContents: {{ extraContents }}</pre>
-            <pre>analyzedGame: {{ analyzedGame }}</pre>
-            <pre>newGameData: {{ newGameData }}</pre>
-        </div>
-
         <form id="Photos" class="space-y-6" v-if="step === 'photos'" @submit.prevent="nextStep">
 
             <div class="flex flex-col gap-2">
                 <Label class="font-semibold">Images</Label>
                 <p class="text-gray-500">
-                    Ajoutez une photo de chaque élément du jeu<br>
+                    Ajoutez une ou plusieurs photos du jeu<br>
                     (boîte, cartouche, notice, ...)
                 </p>
                 <div class="flex flex-col gap-1">
-                    <Input multiple required id="picture" type="file" @change="handleUploadImages"
-                        accept="image/png, image/jpg, image/gif, image/webp" class="cursor-pointer" />
+                    <Input multiple :required="!photosUrl.length" id="picture" type="file" @change="handleUploadImages"
+                        accept="image/*" class="cursor-pointer" />
                     <div class="flex flex-row flex-wrap gap-2 overflow-hidden rounded"
                         v-if="photosUrl.length || photoLoading">
                         <img v-for="image in photosUrl" :key="image" :src="image"
@@ -292,14 +283,10 @@ const handleAddingNewGameSuccess = () => {
                 </div>
             </div>
 
-            <Button @click.prevent="analyseEnabled = !analyseEnabled" variant="secondary">
-                <Icon name="heroicons-solid:light-bulb" class="mr-2" />
-                <span>{{ analyseEnabled ? 'Désactiver' : 'Activer' }} l'IA</span>
-            </Button>
-
             <Button :disabled="loading || photosUploadingCounter" type="submit" class="float-right">
                 <Loader2 v-if="loading" class="mr-2 h-4 w-4 animate-spin" />
-                {{ loading ? 'Envoi des photos en cours...' : 'J`ai pris en photo chaque élément' }}
+                {{ loading ? 'Merci de patienter...' : 'J`ai pris en photo' }}
+                <Icon name="heroicons-solid:arrow-right" class="ml-2" />
             </Button>
 
         </form>
@@ -428,6 +415,8 @@ const handleAddingNewGameSuccess = () => {
 
         <form id="Details" class="space-y-6" v-if="step === 'details'" @submit.prevent="nextStep">
 
+            <p class="text-gray-500">Les informations sont-elles correctes ?</p>
+
             <div class="flex flex-col gap-2">
                 <Label class="font-semibold">Plateforme</Label>
                 <Select v-model="newGameData.platformId" required>
@@ -442,7 +431,11 @@ const handleAddingNewGameSuccess = () => {
                         </SelectGroup>
                     </SelectContent>
                 </Select>
+                <p class="text-sm text-gray-500">
+                    Si la plateforme voulue n'est pas dans la liste, faites une réclamation <NuxtLink to="/contact" class="underline">depuis le menu.</NuxtLink>
+                </p>
             </div>
+
             <div class="flex flex-col gap-2">
                 <Label class="font-semibold">Nom du jeu</Label>
                 <Input required type="text" v-model="newGameData.title" />
@@ -455,11 +448,24 @@ const handleAddingNewGameSuccess = () => {
 
             <div class="flex flex-col gap-2">
                 <Label class="font-semibold">Région</Label>
-                <Input type="text" v-model="newGameData.region" />
+                <Select v-model="newGameData.region" required>
+                    <SelectTrigger>
+                        <SelectValue placeholder="Sélectionnez une région" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup>
+                            <SelectItem value="PAL">PAL</SelectItem>
+                            <SelectItem value="NTSC">NTSC</SelectItem>
+                            <SelectItem value="NTSC-J">NTSC-J</SelectItem>
+                            <SelectItem value="FREE">Region Free</SelectItem>
+                            <SelectItem value="DIGITAL">Dématérialisé</SelectItem>
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
             </div>
 
             <div>
-                <Button @click.prevent="step = 'photos'" class="float-left" :disabled="loading">
+                <Button @click.prevent="step = 'photos'" class="float-left" :disabled="loading" variant="secondary">
                     <Icon name="heroicons-solid:arrow-left" class="mr-2" />
                     <span>Étape précédente</span>
                 </Button>
@@ -467,6 +473,7 @@ const handleAddingNewGameSuccess = () => {
                 <Button type="submit" :disabled="loading" class="float-right">
                     <Loader2 v-if="loading" class="mr-2 h-4 w-4 animate-spin" />
                     {{ loading ? 'Un peu de patience...' : 'Ajouter à la collection' }}
+                    <Icon name="heroicons-solid:arrow-right" class="ml-2" />
                 </Button>
             </div>
 

@@ -165,6 +165,15 @@
           "labels": [],
           "checkboxes": [],
           "comments": []
+        },
+        {
+          "id": "3c95221d-9b36-4e02-a4c8-c17886c93680",
+          "listId": "4ecff08c-afc7-4c2d-80e1-3a9f2252e7b6",
+          "title": "change IA region",
+          "description": "PAL\nNTSC\nNTSC-J\nFREE\nDEMAT",
+          "labels": [],
+          "checkboxes": [],
+          "comments": []
         }
       ]
     },
