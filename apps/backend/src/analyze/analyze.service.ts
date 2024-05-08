@@ -34,10 +34,10 @@ export class AnalyzeService {
         let limit = 0;
 
         if (user.roles.includes('USER'))
-            limit = 5;
+            limit = 10;
 
         if (user.roles.includes('PREMIUM'))
-            limit = 50;
+            limit = 100;
 
         if (user.roles.includes('ADMIN'))
             return 10000;
